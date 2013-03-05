@@ -8,6 +8,13 @@
 
 body{
 	font-family: Helvetica, Arial, sans-serif;
+
+	background-image: -webkit-linear-gradient(top, #FFF 0%, #F05 100%);
+	background-image:    -moz-linear-gradient(top, #FFF 0%  #F05 100%);
+	background-image:     -ms-linear-gradient(top, #FFF 0%, #F05 100%);
+	background-image:      -o-linear-gradient(top, #FFF 0%, #F05 100%);
+	background-image:         linear-gradient(top, #FFF 0%, #F05 100%);
+
 }
 
 main{
@@ -24,16 +31,16 @@ main h1, main h2, main h3{
 }
 
 main h1::before{
-	content: 'FUCKING';
+	content: 'SEXY';
 	display: block;
-	font-size: 0.5em;
-	line-height: 0.8em;
+	font-size: 0.8em;
+	line-height: 0.5em;
 	text-shadow: 0;
 	letter-spacing: 0em;
 }
 
 main h1{
-	color: #213;
+	color: #F05;
 	margin: 0 0 0.5em;
 	text-shadow: 0 0.05em #191919, 0 0.1em white, 0 0.15em #191919;
 	font-size: 30em;
@@ -130,7 +137,6 @@ main ol li{
 }
 
 .demobox .boxsizing img{
-	border-radius: 50%;
 	float: left;
 	border: 10px solid black;
 	width: 50%;
@@ -138,16 +144,43 @@ main ol li{
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	 		box-sizing: border-box;
+	
+	-webkit-border-radius: 50%;
+	   -moz-border-radius: 50%;
+		    border-radius: 50%;
 }
 
-.demobox .colours{
+.demobox .colours, .demobox .shadows{
 	width: 50%;
 	margin: 0 auto;
 	height: 200px;
+}
+
+.demobox .colours{	
 	background-color: red;
 	background-color: #FF0000;
+	background-color: #F00;
 	background-color: rgb(255, 0, 0);
 	background-color: hsl(0, 100%, 50%); /* 0-360 colour, saturation, lightness */
 	background-color: rgba(255, 0, 0, 0.5);
 	background-color: hsla(0, 100%, 50%, 0.5);
+}
+
+.demobox .shadows{
+	background-color: #F5F5F5;
+
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.8);
+	   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.8);
+			box-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+.demobox h4.transitions{
+	-webkit-transition: all 2s linear 0; 
+	   -moz-transition: all 2s linear 0; 
+		 -o-transition: all 2s linear 0; 
+			transition: all 2s linear 0;
+}
+
+.demobox h4:hover{
+	font-size: 10em;
 }
