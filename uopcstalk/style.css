@@ -25,7 +25,6 @@ article{
 }
 
 article h1, article h2, article h3{
-	margin: 1.5em 0;
 	text-transform: uppercase;
 	text-align: center;
 }
@@ -48,11 +47,13 @@ article h1{
 }
 
 article h2{
+	margin: 0.5em 0 0.25em;
 	font-size: 8em;
 	text-shadow: 0 0.1em #F05;
 }
 
 article h3{
+	margin: 1em 0 0.25em;
 	font-size: 4em;
 }
 
@@ -64,7 +65,7 @@ article ol li{
 }
 
 .demo{
-	margin: 25% 0;
+	margin: 10% 0;
 	text-align: center;
 }
 
