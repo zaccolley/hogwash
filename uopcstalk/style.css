@@ -188,3 +188,30 @@ article ol li{
 .demo h3:hover{
 	font-size: 10em;
 }
+
+/* h5pres */
+
+.sideme {
+	position: absolute;
+	width:100%;
+	height:1ex;
+	top:0;
+	left:0;
+	background: #FFF;
+	display: table;
+	z-index: -1;
+	font-size: 50%;
+}
+
+meter {
+    -webkit-appearance: none;
+}
+
+meter::-webkit-meter-bar {
+    background: #fff;
+	color: rgb(204,204,204);
+}
+
+meter::-webkit-meter-optimum-value {
+    background: #f06;
+}
