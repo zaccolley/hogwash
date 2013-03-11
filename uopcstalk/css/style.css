@@ -112,6 +112,8 @@ article ol li{
 .demo ul.animals li:nth-child(3){ color: #8BFF8B; }
 .demo ul.animals li:nth-child(4){ color: #FFAD00; }
 
+/*#505050 B  */
+
 .demo ul.animals li:nth-child(2n){ font-style: italic; text-shadow: 0 0.075em black; }
 
 .demo ul.animals li:last-child::before{
