@@ -1,26 +1,18 @@
-
-
-*{
+*{ /* These are resets, for speed I wouldn't recommend the * selector, for laziness I do */
 	margin: 0;
 	padding: 0;
 
 }
 
 body{
+	background-color: #f5f5f5;
 	font-family: Helvetica, Arial, sans-serif;
-
-	/* background-image: -webkit-linear-gradient(top, #FFF 0%, #F05 100%);
-	background-image:    -moz-linear-gradient(top, #FFF 0%  #F05 100%);
-	background-image:     -ms-linear-gradient(top, #FFF 0%, #F05 100%);
-	background-image:      -o-linear-gradient(top, #FFF 0%, #F05 100%);
-	background-image:         linear-gradient(top, #FFF 0%, #F05 100%); */
-
 }
 
 article{
 	display: block;
 	width: 90%;
-	margin: 0 auto;
+	margin: 0 auto; /* Centers the element */
 	color: #191919;
 }
 
@@ -34,16 +26,16 @@ article h1::before{
 	display: block;
 	font-size: 0.8em;
 	line-height: 0.5em;
-	text-shadow: 0;
+	text-shadow: none;
 	letter-spacing: 0em;
 }
 
 article h1{
 	color: #F05;
 	margin: 0.1em 0em 0.5em;
-	text-shadow: 0 0.05em #191919, 0 0.1em white, 0 0.15em #191919;
+	text-shadow: 0 0.05em #191919, 0 0.1em white, 0 0.15em #191919; /* You are able to stack text shadows */
 	font-size: 30em;
-	letter-spacing: 0.1em;
+	letter-spacing: 0.1em; 
 }
 
 article h2{
@@ -78,13 +70,13 @@ article ol li{
 	color: #F06;
 }
 
-.demo a:hover{
-	cursor: help;
+.demo a:hover{ /* On hover change the styles to this */
+	cursor: default; /* Change the cursor to what you want */
 	opacity: 0.7;
 	font-size: 5.5em;
 }
-
-.demo a:active{ -webkit-filter: blur(10px); }
+/* Active is when you're clicking the element */
+.demo a:active{ -webkit-filter: blur(10px); } /* As of writing filters aren't supported across all browsers */
 
 .demo input{
 	width: 50%;
@@ -103,7 +95,7 @@ article ol li{
 	font-weight: 900;
 	text-transform: uppercase;
 }
-
+/* First and last children of the list */
 .demo ul.animals li:first-child{ text-decoration: line-through; }
 .demo ul.animals li:last-child{ text-transform: lowercase; }
 
@@ -111,10 +103,10 @@ article ol li{
 .demo ul.animals li:nth-child(2){ color: #418AE6; }
 .demo ul.animals li:nth-child(3){ color: #8BFF8B; }
 .demo ul.animals li:nth-child(4){ color: #FFAD00; }
-
+/* text-shadow behaves similarily to box-shadow without the growth parameter */
 .demo ul.animals li:nth-child(2n){ font-style: italic; text-shadow: 0 0.075em black; }
 
-.demo ul.animals li:last-child::before{
+.demo ul.animals li:last-child::before{ /* You can stack pseudo selectors and psuedo elements */
 	content: '>';
 	margin-right: 0.35em;
 }
@@ -125,8 +117,10 @@ article ol li{
 	padding: 0 1em;
 }
 
+/* These are the psuedo-elements*/
+
 .demo .loremtext p::before{
-	content: 'THIS IS BEFORE THE TEXT ';
+	content: 'THIS IS BEFORE THE TEXT '; /* Content is required even if it's an empty string '' */
 	color: #FF0047;
 }
 
@@ -147,11 +141,11 @@ article ol li{
 	border: 10px solid #191919;
 	width: 50%;
 
-	-webkit-box-sizing: border-box;
+	-webkit-box-sizing: border-box; /* Makes width take into account padding and borders */
 	   -moz-box-sizing: border-box;
-	 		box-sizing: border-box;
+	 		box-sizing: border-box; 
 	
-	-webkit-border-radius: 50%;
+	-webkit-border-radius: 50%; /* Makes element circular */
 	   -moz-border-radius: 50%;
 		    border-radius: 50%;
 }
@@ -164,11 +158,11 @@ article ol li{
 
 .demo .colours{	
 	background-color: red;
-	background-color: #FF0000;
-	background-color: #F00;
-	background-color: rgb(255, 0, 0);
-	background-color: hsl(0, 100%, 50%); /* 0-360 colour, saturation, lightness */
-	background-color: rgba(255, 0, 0, 0.5);
+	background-color: #FF0000; /* RGB in hex */
+	background-color: #F00; /* This is the shorthand version if they are duplicates only */
+	background-color: rgb(255, 0, 0); /* Red, Green, Blue 0-255 */
+	background-color: hsl(0, 100%, 50%); /* Hue: 0-360, saturation, lightness */
+	background-color: rgba(255, 0, 0, 0.5); /* Adding alpha transparency, range goes from 0-10 */
 	background-color: hsla(0, 100%, 50%, 0.5);
 }
 
@@ -181,15 +175,17 @@ article ol li{
 }
 
 .demo h3.transitions{
-	-webkit-transition: all 2s linear 0; 
-	   -moz-transition: all 2s linear 0; 
-		 -o-transition: all 2s linear 0; 
-			transition: all 2s linear 0;
+	-webkit-transition: all 2s linear; 
+	   -moz-transition: all 2s linear; 
+		 -o-transition: all 2s linear; 
+			transition: all 2s linear;
 }
 
 .demo h3:hover{
 	font-size: 10em;
 }
+
+/* The spinner uses borders to create a shape */
 
 .spinner{  
 	margin: 10% auto;
@@ -207,6 +203,8 @@ article ol li{
 		 -o-animation: spin 1s infinite linear;
 		    animation: spin 1s infinite linear;
 }
+
+/* These are the actual animations. You can do more than just 'from' and 'to' such as percentages */
 
 @-webkit-keyframes spin{
     from { -webkit-transform: rotate(0deg); }
