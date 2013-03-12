@@ -149,6 +149,13 @@ article ol li{
 		    border-radius: 50%;
 }
 
+@media (max-width: 600px){ /* When width of window gets smaller than 600px */
+	body{
+		background: blue;
+		-webkit-filter: invert(1);
+	}
+}
+
 .demo .colours, .demo .shadows{
 	width: 50%;
 	margin: 0 auto;
