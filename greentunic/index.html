@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Walk Animation Test</title>
+	<style type="text/css">
+	.link {
+		background: url('img/sprites.png');
+		-webkit-animation: walk 1s steps(13,end) infinite;
+		width: 17px;
+		height: 22px;
+	}
+	@-webkit-keyframes walk {
+    	from { background-position: -8px -151px; }
+   		to { background-position: -398px -151px; }
+	}
+	</style>
+</head>
+<body>
+	<div class='link'></div>
+</body>
+</html>
