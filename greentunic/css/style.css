@@ -35,13 +35,12 @@ main{
 }
 
 .link {
-	background: url('../img/sprites.png');
-	-webkit-animation: walk 1s steps(10,end) infinite;
+	background: url('../img/walkupsprite.png');
+	 -webkit-animation: walk 1s steps(11,end) infinite; 
 	width: 20px;
-	height: 26px;
+	height: 25px;
 	margin: 0 auto;
 }	
 @-webkit-keyframes walk {
-		from { background-position:  -172px -187px; }
-		to { background-position: -347px -187px; }
+		to { background-position: -241px 0 }
 	}
