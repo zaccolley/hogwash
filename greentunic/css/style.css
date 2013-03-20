@@ -62,6 +62,8 @@ main{
 	background-image: url('../img/castleinterior.png');
 	background-position: 50% 10%;
 	-webkit-animation: walkUp 5s linear;
+	-webkit-user-select: none;
+	cursor: default;
 }
 
 h1{
@@ -75,6 +77,8 @@ h1{
 	text-transform: uppercase;
 	text-align: center;
 	-webkit-animation: fadeIn 5s linear, wiggle 1s linear infinite;
+
+
 }
 
 @-webkit-keyframes fadeIn{
