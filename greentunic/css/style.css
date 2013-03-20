@@ -17,21 +17,43 @@
 }
 
 body{
-	background: #AAA;
+	background: -webkit-radial-gradient(#647951, #839E6B) center center
 }
 
 main{
 	display: block;
 	margin: 0 auto;
-	width: 256px;
-}	
+	width: 300px;
+}
+
+.topframe{
+	border-radius: 8px;
+	padding: 20px 10px;
+	background: #1C2533 repeat-x;
+	background-image: -webkit-radial-gradient(rgba(17, 17, 17, 0.39) 7px, transparent 7px), -webkit-radial-gradient(rgba(17, 17, 17, 0.39) 7px, transparent 7px);
+	background-size: 256px;
+	background-position: 150px -102px, 150px 142px;
+	width: 100%;
+	margin: 50% auto;
+	box-shadow: 0 0 100px black;
+}
+
+.rim{
+	border: 3px black;
+	border-radius: 5px;
+	padding: 10px;
+	padding-bottom: 25px;
+	background: url('../img/logo.png') #010101 no-repeat center 208px;
+	background-size: 60%;
+}
 
 .animation{
+	border-radius: 5px;
+	border: 4px solid rgb(41, 41, 41);
 	overflow: hidden;
 	width: 100%;
-	height: 256px;
-	margin: 50% auto;
-	padding-top: 10%;
+	height: 192px;
+	padding-top: 20px;
 	background: no-repeat center;
 	background-image: url('../img/castleinterior.png');
 	background-position: 50% 10%;
@@ -44,26 +66,34 @@ h1{
 	text-shadow: 0 1px rgba(0,0,0,0.75), 0 -1px rgba(0,0,0,0.75),
 			     1px 0 rgba(0,0,0,0.75), -1px 0 rgba(0,0,0,0.75), 0 0 15px #000;
 	font-size: 2em;
-	color: white;
+	line-height: 1.1em;
+	color: #B9FF8B;
+	text-transform: uppercase;
 	text-align: center;
-	-webkit-animation: fadeIn 5s linear;
+	-webkit-animation: fadeIn 5s linear, wiggle 1s linear infinite;
 }
 
 @-webkit-keyframes fadeIn{
 	0%{opacity: 0;}
-	92.5%{opacity: 0;}
+	90%{opacity: 0;}
 	100%{opacity: 1;}
 }
 
+@-webkit-keyframes wiggle{
+	0%{ padding-top: 25px;}
+	50%{ padding-top: 27px;}
+	100%{padding-top: 25px;}
+}
+
 @-webkit-keyframes walkUp{
-	0%{ padding-top: 100%; background-position: 50% 100%; background-image: url('../img/castlegarden.png');}
-	16.6%{ padding-top: 50%; background-position: 50% 100%; }
-	33.3%{ padding-top: 50%; background-position: 50% 10%; }
-	50%{ background-position: 50% 10%; padding-top: 0%; background-image: url('../img/castlegarden.png'); }
-	50.1%{ padding-top: 100%; background-image: url('../img/castleinterior.png'); background-position: 50% 100%;}
-	66.6%{ padding-top: 50%; background-position: 50% 100%; }
-	83.3%{ padding-top: 50%; background-position: 50% 10%; }
-	100%{ padding-top: 10%; background-position: 50% 10%; background-image: url('../img/castleinterior.png'); }
+	0%{ padding-top: 162px; background-position: 50% 100%; background-image: url('../img/castlegarden.png');}
+	16.6%{ padding-top: 96px; background-position: 50% 100%; }
+	33.3%{ padding-top: 96px; background-position: 50% 10%; }
+	50%{  padding-top: 0px; background-position: 50% 10%; background-image: url('../img/castlegarden.png'); }
+	50.1%{padding-top: 162px; background-image: url('../img/castleinterior.png'); background-position: 50% 100%;}
+	66.6%{ padding-top: 96px; background-position: 50% 100%; }
+	83.3%{ padding-top: 96px; background-position: 50% 10%; }
+	100%{ padding-top: 20px; background-position: 50% 10%; background-image: url('../img/castleinterior.png'); }
 }
 
 .link {
