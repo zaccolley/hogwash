@@ -25,6 +25,8 @@ main{
 	margin: 5% auto;
 	width: 300px;
 	-webkit-animation: fade 1s;
+	-webkit-user-select: none;
+	cursor: default;
 }
 
 
@@ -62,8 +64,6 @@ main{
 	background-image: url('../img/castleinterior.png');
 	background-position: 50% 10%;
 	-webkit-animation: walkUp 5s linear;
-	-webkit-user-select: none;
-	cursor: default;
 }
 
 h1{
@@ -132,7 +132,7 @@ h1{
 	margin: 0 auto;
 	width: 99%;
 	height: 30px;
-	box-shadow: inset 5px 0 10px #10151D, inset -5px 0 10px #10151D;
+	box-shadow: inset 5px 0 10px #10151D, inset -5px 0 10px #10151, 0 0 100px rgba(0, 0, 0,0.5);
 	background: -webkit-linear-gradient(top, #10151D 10%, #202B3C 50%, #10151D 90%);
 	border-radius: 10px;
 }
@@ -159,6 +159,10 @@ h1{
 	width: 18px;
 }
 
+.upper, .lower{
+	overflow: hidden;
+}
+
 .bottom{
 	height: 271px;
 	border: 2px solid rgba(0, 0, 0,0.15);
@@ -171,6 +175,7 @@ h1{
 	background-image: -webkit-radial-gradient(rgba(20, 20, 20, 0.86) 6px,rgba(17, 17, 17, 0.39) 6px, rgba(17, 17, 17, 0.39) 9px, transparent 7px);
 	background-size: 256px;
 	background-position: 10px -95px;
+	box-shadow: 0 0 100px rgba(0, 0, 0,0.5);
 }
 
 .buttonhole{
@@ -180,15 +185,15 @@ h1{
 	border: 2px solid rgba(255, 255, 255, 0.01); 
 }
 
-.buttonhole:first-child{
-	margin: 30px 0;
+.upper .buttonhole:first-child{
+	margin: 30px 0 0;
 	height: 110px;
 	float: left;
 	border-radius: 50%;
 }
 
-.buttonhole:last-child{
-	margin: 60px 0;
+.upper .buttonhole:last-child{
+	margin: 60px 0 0;
 	height: 50px;
 	float: right;
 	border-radius: 50px;
@@ -198,7 +203,7 @@ h1{
 .button{
 	border: 2px solid rgba(0, 0, 0, 0.07);
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.09);
-	color: rgba(0, 0, 0, 0.38);
+	color: rgba(0, 0, 0, 0.1);
 	font-weight: 900;
 	font-family: Helvetica;
 	margin-top: 7px;
@@ -206,9 +211,57 @@ h1{
 	border-radius: 50%;
 	background: rgb(27, 27, 27);
 	float: left;
+	
+}
+
+.upper .button{
 	-webkit-transform: rotate(20deg);
 }
 
-.button:first-child{
+.upper .button:first-child{
 	margin-right: 22px;
+}
+
+.lower{
+	margin: -15px auto 0;
+	width: 33%;
+}
+
+.lower .dots{
+	margin: 5px auto;
+	width: 60px;
+	height: 60px;
+	background: -webkit-radial-gradient(rgba(0, 0, 0, 0.27) 1px, transparent 2px);
+	background-size: 15px;
+	background-position: 0 -5px;
+}
+
+.lower p{
+	color: rgba(0, 0, 0, 0.33);
+	letter-spacing: -1px;
+	font-family: Helvetica;
+	font-size: 8px;
+	text-align: center;
+}
+
+.lower .buttonhole{
+	overflow: hidden;
+	width: 35px;
+	height: 35px;
+	margin: 0 auto;
+	border-radius: 50%;
+	padding: 1px 6px;
+	box-shadow: inset 0 0 5px 3px rgba(0,0,0,0.25);
+	border: 2px solid rgba(255, 255, 255, 0.01);
+}
+
+.lower .button{
+	padding: 0;
+	height: 20px;
+	width: 20px;
+	margin: 4px auto;
+}
+.selectstart{
+	float: left;
+	width: 50%;
 }
