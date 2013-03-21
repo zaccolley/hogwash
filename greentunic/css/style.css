@@ -17,18 +17,50 @@
 }
 
 body{
-	background-color: #B1B6AD;
+	background-color: #ADB6B3;
 }
 
 main{
+	box-shadow: 10px 0 10px rgba(0, 0, 0, 0.09);
+	background: -webkit-linear-gradient(left, transparent, rgba(255, 255, 255, 0.41) 80%);
+	overflow: hidden;
+	width: 825px;
+	height: 100vh;
 	display: block;
-	margin: 5% auto;
-	width: 300px;
+	margin: 0 auto;
+	padding: 55px;
 	-webkit-animation: fade 1s;
+}
+
+#gameboy{
+	float: left;
+	width: 300px;
 	-webkit-user-select: none;
 	cursor: default;
 }
 
+#message{
+	float: left;
+	width: 400px;
+	padding: 5%;
+}
+
+#message p:first-child, #message p:last-child{
+	font-size: 2.25em;
+}
+
+#message p:first-child{text-align: left;}
+#message p:last-child{text-align: right;}
+
+#message p{
+	margin: .5em 0;
+	text-align: center;
+	font-family: Georgia, 'Times New Roman',serif;
+	font-size: 3.5em;
+	text-shadow: 0 1px rgba(169, 197, 207, 0.3);
+	color: rgb(1, 60, 75);
+	font-style: italic;
+}
 
 .top{
 	border: 2px solid rgba(0, 0, 0,0.15);
@@ -183,6 +215,7 @@ h1{
 }
 
 .bottom{
+	
 	height: 260px;
 	border: 2px solid rgba(0, 0, 0,0.15);
 	border-bottom-right-radius: 8px;
