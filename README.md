@@ -2,9 +2,12 @@
 
 random bits and bobs
 
-### [greentunic](# "Birthday present")
+### [greentunic](http://www.zaccolley.com/stuff/aaron "Birthday present")
 
 birthday present to my friend, with help from [my brother](http://www.github.com/nickcolley "Nick Colley")!
+
+It features a CSS Gameboy Advance SP!
+**only works in Chrome currently**
 
 ### [uopcstalk](http://www.zaccolley.com/stuff/sexycsstalk "SEXY CSS TALK")
 
