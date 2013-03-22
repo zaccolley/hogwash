@@ -16,6 +16,8 @@
 			box-sizing: border-box;
 }
 
+html,body { height: 100%; }
+
 html{ background-color: #ADB6B3; }
 
 main{
@@ -307,7 +309,7 @@ h1{
 }
 
 .bottom{
-	width: 96%;
+	width: 98%;
 	height: 260px;
 	margin: 0 auto;
 	padding: 20px 10px;
