@@ -9,78 +9,466 @@
 }
 
 *{
-		margin: 0;
-		padding:0;
-		-webkit-box-sizing: border-box;
-		   -moz-box-sizing: border-box;
-				box-sizing: border-box;
+	margin: 0;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
 }
 
-body{
-	background: #AAA;
-}
+html,body { height: 100%; }
+
+html{ background-color: #ADB6B3; }
 
 main{
 	display: block;
+	overflow: hidden;
+	width: 825px;
+	height: 100vh;
 	margin: 0 auto;
-	width: 256px;
-}	
+	padding: 55px;
+
+	background-image: -webkit-linear-gradient(left, transparent, rgba(255,255,255,.2) 80%);
+	background-image:    -moz-linear-gradient(left, transparent, rgba(255,255,255,.2) 80%);
+	background-image: 	  -ms-linear-gradient(left, transparent, rgba(255,255,255,.2) 80%);
+	background-image: 	   -o-linear-gradient(left, transparent, rgba(255,255,255,.2) 80%);
+	background-image:         linear-gradient(left, transparent, rgba(255,255,255,.2) 80%);
+
+	-webkit-box-shadow: 10px 0 10px rgba(0,0,0,.1);
+	   -moz-box-shadow: 10px 0 10px rgba(0,0,0,.1);
+			box-shadow: 10px 0 10px rgba(0,0,0,.1);
+
+	-webkit-animation: fadeContent 1s;
+	   -moz-animation: fadeContent 1s;
+		-ms-animation: fadeContent 1s;
+		 -o-animation: fadeContent 1s;
+			animation: fadeContent 1s;
+}
+
+	@-webkit-keyframes fadeContent { from{ opacity: 0; } }
+	   @-moz-keyframes fadeContent { from{ opacity: 0; } }
+		@-ms-keyframes fadeContent { from{ opacity: 0; } }
+		 @-o-keyframes fadeContent { from{ opacity: 0; } }
+			@keyframes fadeContent { from{ opacity: 0; } }
+
+#gameboy, #message{ float: left; }
+
+#gameboy{
+	font-family: Helvetica, Arial, sans-serif;
+	width: 300px;
+	cursor: default;
+
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+		-ms-user-select: none;
+			user-select: none;
+}
+
+#message{
+	width: 400px;
+	padding: 5%;
+}
+
+
+#message p{
+	margin: .5em 0;
+	text-align: center;
+	font-family: Georgia, 'Times New Roman',serif;
+	font-size: 3.5em;
+	color: rgb(0, 60, 75);
+	text-shadow: 0 1px rgba(170,200,200,.3);
+	font-style: italic;
+}
+
+#message p:first-child, #message p:last-child{ font-size: 2.25em; }
+#message p:first-child{ text-align: left; }
+#message p:last-child{  text-align: right; }
+
+.top{
+	width: 100%;
+	padding: 20px 10px;
+	border: 2px solid rgba(0,0,0,.15);
+	background: #1C2533 repeat-x;
+	background-size: 256px;
+	background-position: 150px -102px, 150px 142px;
+
+	background-image: -webkit-radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px),
+					  -webkit-radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px);
+	background-image:    -moz-radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px),
+						 -moz-radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px);
+	background-image:     -ms-radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px),
+						  -ms-radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px);
+	background-image:      -o-radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px),
+						   -o-radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px);
+	background-image:    	  radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px),
+							  radial-gradient(rgba(17,17,17,.4) 7px, transparent 7px);
+
+	-webkit-box-shadow: 0 0 100px rgba(0,0,0,0.5);
+	   -moz-box-shadow: 0 0 100px rgba(0,0,0,0.5);
+			box-shadow: 0 0 100px rgba(0,0,0,0.5);
+
+	-webkit-border-radius: 8px;
+	   -moz-border-radius: 8px;
+			border-radius: 8px;
+}
+
+.rim{
+	padding: 10px 10px 25px;
+	background: url('../img/logo.png') #010101 no-repeat center 208px;
+	background-size: 60%;
+	border: 3px solid #000;
+
+	-webkit-box-shadow: inset 150px 0 rgba(255,255,255,.05);
+	   -moz-box-shadow: inset 150px 0 rgba(255,255,255,.05);
+			box-shadow: inset 150px 0 rgba(255,255,255,.05);
+	
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+			border-radius: 5px;
+}
 
 .animation{
 	overflow: hidden;
 	width: 100%;
-	height: 256px;
-	margin: 50% auto;
-	padding-top: 10%;
+	height: 192px;
+	padding-top: 20px;
 	background: no-repeat center;
 	background-image: url('../img/castleinterior.png');
 	background-position: 50% 10%;
+	border: 4px solid rgb(41,41,41);
+
 	-webkit-animation: walkUp 5s linear;
+	   -moz-animation: walkUp 5s linear;
+		-ms-animation: walkUp 5s linear;
+		 -o-animation: walkUp 5s linear;
+			animation: walkUp 5s linear;
+
+	-webkit-box-shadow: inset 0 0 10px 5px rgba(0,0,0,.5);
+	   -moz-box-shadow: inset 0 0 10px 5px rgba(0,0,0,.5);
+			box-shadow: inset 0 0 10px 5px rgba(0,0,0,.5);
+	
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+			border-radius: 5px;
+}
+
+@-webkit-keyframes walkUp{
+	   0%{ padding-top: 180px; background-position: 50% 100%; background-image: url('../img/castlegarden.png');}
+	16.6%{ padding-top:  96px; background-position: 50% 100%; }
+	33.3%{ padding-top:  96px; background-position: 50%  10%; }
+	  50%{ padding-top:   0px; background-position: 50%  10%; background-image: url('../img/castlegarden.png'); }
+	50.1%{ padding-top: 162px; background-position: 50% 100%; background-image: url('../img/castleinterior.png'); }
+	66.6%{ padding-top:  96px; background-position: 50% 100%; }
+	83.3%{ padding-top:  96px; background-position: 50%  10%; }
+	 100%{ padding-top:  20px; background-position: 50%  10%; background-image: url('../img/castleinterior.png'); }
+}
+   @-moz-keyframes walkUp{
+	   0%{ padding-top: 180px; background-position: 50% 100%; background-image: url('../img/castlegarden.png');}
+	16.6%{ padding-top:  96px; background-position: 50% 100%; }
+	33.3%{ padding-top:  96px; background-position: 50%  10%; }
+	  50%{ padding-top:   0px; background-position: 50%  10%; background-image: url('../img/castlegarden.png'); }
+	50.1%{ padding-top: 162px; background-position: 50% 100%; background-image: url('../img/castleinterior.png'); }
+	66.6%{ padding-top:  96px; background-position: 50% 100%; }
+	83.3%{ padding-top:  96px; background-position: 50%  10%; }
+	 100%{ padding-top:  20px; background-position: 50%  10%; background-image: url('../img/castleinterior.png'); }
+}
+	@-ms-keyframes walkUp{
+	   0%{ padding-top: 180px; background-position: 50% 100%; background-image: url('../img/castlegarden.png');}
+	16.6%{ padding-top:  96px; background-position: 50% 100%; }
+	33.3%{ padding-top:  96px; background-position: 50%  10%; }
+	  50%{ padding-top:   0px; background-position: 50%  10%; background-image: url('../img/castlegarden.png'); }
+	50.1%{ padding-top: 162px; background-position: 50% 100%; background-image: url('../img/castleinterior.png'); }
+	66.6%{ padding-top:  96px; background-position: 50% 100%; }
+	83.3%{ padding-top:  96px; background-position: 50%  10%; }
+	 100%{ padding-top:  20px; background-position: 50%  10%; background-image: url('../img/castleinterior.png'); }
+}
+	 @-o-keyframes walkUp{
+	   0%{ padding-top: 180px; background-position: 50% 100%; background-image: url('../img/castlegarden.png');}
+	16.6%{ padding-top:  96px; background-position: 50% 100%; }
+	33.3%{ padding-top:  96px; background-position: 50%  10%; }
+	  50%{ padding-top:   0px; background-position: 50%  10%; background-image: url('../img/castlegarden.png'); }
+	50.1%{ padding-top: 162px; background-position: 50% 100%; background-image: url('../img/castleinterior.png'); }
+	66.6%{ padding-top:  96px; background-position: 50% 100%; }
+	83.3%{ padding-top:  96px; background-position: 50%  10%; }
+	 100%{ padding-top:  20px; background-position: 50%  10%; background-image: url('../img/castleinterior.png'); }
+}
+		@keyframes walkUp{
+	   0%{ padding-top: 180px; background-position: 50% 100%; background-image: url('../img/castlegarden.png');}
+	16.6%{ padding-top:  96px; background-position: 50% 100%; }
+	33.3%{ padding-top:  96px; background-position: 50%  10%; }
+	  50%{ padding-top:   0px; background-position: 50%  10%; background-image: url('../img/castlegarden.png'); }
+	50.1%{ padding-top: 162px; background-position: 50% 100%; background-image: url('../img/castleinterior.png'); }
+	66.6%{ padding-top:  96px; background-position: 50% 100%; }
+	83.3%{ padding-top:  96px; background-position: 50%  10%; }
+	 100%{ padding-top:  20px; background-position: 50%  10%; background-image: url('../img/castleinterior.png'); }
 }
 
 h1{
-	font-family: 'High Pixel';
 	padding: 25px;
+<<<<<<< HEAD
 	text-shadow: 0 1px #1F1F1F, 0 -1px #1F1F1F,
 			     1px 0 #1F1F1F, -1px 0 #1F1F1F, 0 0 15px #000;
 	font-size: 2em;
 	color: #F5F5F5;
+=======
+	padding-top: 25px;
+	font-family: 'High Pixel', Helvetica, Arial, sans-serif;
+	font-size: 2em;
+	line-height: 1.1em;
+	color: #B9FF8B;
+>>>>>>> 7878b8fd5e78f3444df2b9e72a63cb9bc9b6f963
 	text-align: center;
-	-webkit-animation: fadeIn 5s linear;
+	text-transform: uppercase;
+	text-shadow: 0 1px rgba(0,0,0,.75), 0 -1px rgba(0,0,0,.75),
+			     1px 0 rgba(0,0,0,.75), -1px 0 rgba(0,0,0,.75), 0 0 15px #000;
+
+	-webkit-animation: titleFade 5s linear, wiggle 1s linear infinite;
+	   -moz-animation: titleFade 5s linear, wiggle 1s linear infinite;
+		-ms-animation: titleFade 5s linear, wiggle 1s linear infinite;
+		 -o-animation: titleFade 5s linear, wiggle 1s linear infinite;
+			animation: titleFade 5s linear, wiggle 1s linear infinite;
 }
 
-@-webkit-keyframes fadeIn{
-	0%{opacity: 0;}
-	92.5%{opacity: 0;}
-	100%{opacity: 1;}
-}
+	@-webkit-keyframes titleFade{ 0%, 90%{ opacity: 0; } 100%{ opacity: 1; } }
+	   @-moz-keyframes titleFade{ 0%, 90%{ opacity: 0; } 100%{ opacity: 1; } }
+		@-ms-keyframes titleFade{ 0%, 90%{ opacity: 0; } 100%{ opacity: 1; } }
+		 @-o-keyframes titleFade{ 0%, 90%{ opacity: 0; } 100%{ opacity: 1; } }
+			@keyframes titleFade{ 0%, 90%{ opacity: 0; } 100%{ opacity: 1; } }
 
-@-webkit-keyframes walkUp{
-	0%{ padding-top: 100%; background-position: 50% 100%; background-image: url('../img/castlegarden.png');}
-	16.6%{ padding-top: 50%; background-position: 50% 100%; }
-	33.3%{ padding-top: 50%; background-position: 50% 10%; }
-	50%{ background-position: 50% 10%; padding-top: 0%; background-image: url('../img/castlegarden.png'); }
-	50.1%{ padding-top: 100%; background-image: url('../img/castleinterior.png'); background-position: 50% 100%;}
-	66.6%{ padding-top: 50%; background-position: 50% 100%; }
-	83.3%{ padding-top: 50%; background-position: 50% 10%; }
-	100%{ padding-top: 10%; background-position: 50% 10%; background-image: url('../img/castleinterior.png'); }
-}
+	@-webkit-keyframes titleWiggle{ 50%{ padding-top: 27px; } }
+	   @-moz-keyframes titleWiggle{ 50%{ padding-top: 27px; } }
+		@-ms-keyframes titleWiggle{ 50%{ padding-top: 27px; } }
+		 @-o-keyframes titleWiggle{ 50%{ padding-top: 27px; } }
+			@keyframes titleWiggle{ 50%{ padding-top: 27px; } }
 
 .link {
-	background: url('../img/ocarinasprite.png');
+	overflow: hidden;
 	width: 20px;
 	height: 25px;
 	margin: 0 auto;
+	background-image: url('../img/ocarinasprite.png');
+
+	-webkit-animation: spriteChange 5s linear, animateSprite 1s steps(11,end) infinite;
+	   -moz-animation: spriteChange 5s linear, animateSprite 1s steps(11,end) infinite;
+		-ms-animation: spriteChange 5s linear, animateSprite 1s steps(11,end) infinite;
+		 -o-animation: spriteChange 5s linear, animateSprite 1s steps(11,end) infinite;
+			animation: spriteChange 5s linear, animateSprite 1s steps(11,end) infinite; 
+}
+
+	@-webkit-keyframes spriteChange{ 0%, 99.9%{ background-image: url('../img/walkupsprite.png'); } 100%{ background-image: url('../img/ocarinasprite.png'); } }
+	   @-moz-keyframes spriteChange{ 0%, 99.9%{ background-image: url('../img/walkupsprite.png'); } 100%{ background-image: url('../img/ocarinasprite.png'); } }
+		@-ms-keyframes spriteChange{ 0%, 99.9%{ background-image: url('../img/walkupsprite.png'); } 100%{ background-image: url('../img/ocarinasprite.png'); } }
+		 @-o-keyframes spriteChange{ 0%, 99.9%{ background-image: url('../img/walkupsprite.png'); } 100%{ background-image: url('../img/ocarinasprite.png'); } }
+			@keyframes spriteChange{ 0%, 99.9%{ background-image: url('../img/walkupsprite.png'); } 100%{ background-image: url('../img/ocarinasprite.png'); } }
+
+	@-webkit-keyframes animateSprite { to { background-position: -241px 0; } }
+	   @-moz-keyframes animateSprite { to { background-position: -241px 0; } }
+		@-ms-keyframes animateSprite { to { background-position: -241px 0; } }
+		 @-o-keyframes animateSprite { to { background-position: -241px 0; } }
+			@keyframes animateSprite { to { background-position: -241px 0; } }
+
+.hinge{
+	margin: 0 auto;
+	width: 99%;
+	height: 30px;
+
+	background-image: -webkit-linear-gradient(top, #10151D 10%, #202B3C 50%, #10151D 90%);
+	background-image:    -moz-linear-gradient(top, #10151D 10%, #202B3C 50%, #10151D 90%);
+	background-image:     -ms-linear-gradient(top, #10151D 10%, #202B3C 50%, #10151D 90%);
+	background-image:      -o-linear-gradient(top, #10151D 10%, #202B3C 50%, #10151D 90%);
+	background-image:    	  linear-gradient(top, #10151D 10%, #202B3C 50%, #10151D 90%);
+
+	-webkit-border-radius: 10px;
+	   -moz-border-radius: 10px;
+			border-radius: 10px;
+
+	-webkit-box-shadow: inset 5px 0 10px #10151D, inset -5px 0 10px #101511, 0 0 100px rgba(0,0,0,.5);
+	   -moz-box-shadow: inset 5px 0 10px #10151D, inset -5px 0 10px #101511, 0 0 100px rgba(0,0,0,.5);
+			box-shadow: inset 5px 0 10px #10151D, inset -5px 0 10px #101511, 0 0 100px rgba(0,0,0,.5);
+}
+
+.hinge::before, .hinge::after{
+	content: '';
+	display: block;
+	height: 29px;
+	border-top: 1px solid rgba(0,0,0,.1);
+	border-left: 1px solid rgba(0,0,0,.2);
+	border-right: 1px solid rgba(0,0,0,.2);
+
+	-webkit-box-shadow: inset 0 5px 5px rgb(24,31,43);
+	   -moz-box-shadow: inset 0 5px 5px rgb(24,31,43);
+			box-shadow: inset 0 5px 5px rgb(24,31,43);
+}
+
+.hinge::before{
+	margin-left: 30px;
+	width: 115px
+}
+
+.hinge::after{
+	float: right;
+	margin: -30px 20px 0 0;
+	width: 18px;
+}
+
+.upper, .lower{
 	overflow: hidden;
-	-webkit-animation: states 5s linear, walk 1s steps(11,end) infinite; 
 }
 
-@-webkit-keyframes states{
-	0%{ background: url('../img/walkupsprite.png'); }
-	99.9%{ background: url('../img/walkupsprite.png');}
-	100%{ background: url('../img/ocarinasprite.png'); }
+.bottom{
+	width: 98%;
+	height: 260px;
+	margin: 0 auto;
+	padding: 20px 10px;
+	background: #1C2533 no-repeat;
+	background-size: 256px;
+	background-position: 10px -95px;
+	border: 2px solid rgba(0,0,0,.15);
+
+	background-image: -webkit-radial-gradient(rgba(20,20,20,.85) 6px, rgba(17,17,17,.4) 6px, rgba(17,17,17,.4) 9px, transparent 7px);
+	background-image:    -moz-radial-gradient(rgba(20,20,20,.85) 6px, rgba(17,17,17,.4) 6px, rgba(17,17,17,.4) 9px, transparent 7px);
+	background-image:     -ms-radial-gradient(rgba(20,20,20,.85) 6px, rgba(17,17,17,.4) 6px, rgba(17,17,17,.4) 9px, transparent 7px);
+	background-image:      -o-radial-gradient(rgba(20,20,20,.85) 6px, rgba(17,17,17,.4) 6px, rgba(17,17,17,.4) 9px, transparent 7px);
+	background-image:    	  radial-gradient(rgba(20,20,20,.85) 6px, rgba(17,17,17,.4) 6px, rgba(17,17,17,.4) 9px, transparent 7px);
+
+	-webkit-box-shadow: 0 0 100px rgba(0,0,0,.5);
+	   -moz-box-shadow: 0 0 100px rgba(0,0,0,.5);
+			box-shadow: 0 0 100px rgba(0,0,0,.5);
+
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	   -moz-border-radius-bottomleft: 8px;
+	   -moz-border-radius-bottomright: 8px;
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+
 }
 
-@-webkit-keyframes walk {
-		to { background-position: -241px 0 }
-	}
+.buttonhole, .button, .joystick::before{
+	-webkit-border-radius: 50%;
+	   -moz-border-radius: 50%;
+			border-radius: 50%;
+}
+
+.buttonhole{
+	border: 2px solid rgba(255,255,255,.01); 
+
+	-webkit-box-shadow: inset 0 0 5px 3px rgba(0,0,0,.25);
+	   -moz-box-shadow: inset 0 0 5px 3px rgba(0,0,0,.25);
+			box-shadow: inset 0 0 5px 3px rgba(0,0,0,.25);
+}
+
+.upper .buttonhole{	
+	width: 110px;
+	padding: 0 10px;
+}
+
+.upper .buttonhole:first-child{
+	float: left;
+	margin-top: 20px;
+	height: 110px;
+}
+
+.upper .buttonhole:last-child{
+	float: right;
+	margin-top: 50px;
+	height: 50px;
+
+	-webkit-border-radius: 50px;
+	   -moz-border-radius: 50px;
+			border-radius: 50px;
+
+	-webkit-transform: rotate(-20deg);
+	   -moz-transform: rotate(-20deg);
+		-ms-transform: rotate(-20deg);
+		 -o-transform: rotate(-20deg);
+			transform: rotate(-20deg);
+}
+
+.button{
+	float: left;
+	font-weight: 900;
+	color: rgba(0,0,0,.1);
+	text-shadow: 0 1px 0 rgba(0,0,0,.1);
+	background: rgb(27,27,27);
+}
+
+.upper .button{	
+	margin-top: 7px;
+	padding: 6px 10px;
+	-webkit-transform: rotate(20deg);
+	   -moz-transform: rotate(20deg);
+		-ms-transform: rotate(20deg);
+		 -o-transform: rotate(20deg);
+			transform: rotate(20deg);
+}
+
+.upper .button:first-child{
+	margin-right: 22px;
+}
+
+.joystick{
+	line-height: 110px;
+	font-size: 146px;
+	font-weight: 900;
+	color: rgb(27,27,27);
+}
+
+.joystick::before{
+	content: '';
+	display: block;
+	position: absolute;
+	margin: 47px 35px;
+	height: 15px;
+	width: 15px;
+
+	-webkit-box-shadow: inset 0 0 15px rgba(43,43,43,.5);
+	   -moz-box-shadow: inset 0 0 15px rgba(43,43,43,.5);
+			box-shadow: inset 0 0 15px rgba(43,43,43,.5);
+}
+
+.lower{
+	margin: -20px auto 0;
+	width: 33%;
+}
+
+.lower .dots{
+	margin: 5px auto;
+	width: 60px;
+	height: 60px;
+	background-size: 15px;
+	background-position: 0 -5px;
+
+	background-image: -webkit-radial-gradient(rgba(0,0,0,.27) 1px, transparent 2px);
+	background-image:    -moz-radial-gradient(rgba(0,0,0,.27) 1px, transparent 2px);
+	background-image:     -ms-radial-gradient(rgba(0,0,0,.27) 1px, transparent 2px);
+	background-image:      -o-radial-gradient(rgba(0,0,0,.27) 1px, transparent 2px);
+	background-image:    	  radial-gradient(rgba(0,0,0,.27) 1px, transparent 2px);
+}
+
+.lower p{
+	letter-spacing: -1px;
+	text-align: center;
+	color: rgba(0,0,0,.33);
+	font-size: 8px;
+}
+
+.lower .buttonhole{
+	overflow: hidden;
+	width: 35px;
+	height: 35px;
+	margin: 0 auto;
+	padding: 1px 6px;
+}
+
+.lower .button{
+	padding: 0;
+	height: 21px;
+	width: 21px;
+	margin: 4px -1px;
+}
+
+.selectstart{
+	float: left;
+	width: 50%;
+}
