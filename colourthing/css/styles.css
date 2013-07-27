@@ -1,0 +1,21 @@
+*{ margin: 0; padding: 0; box-sizing: border-box; }
+
+main{
+	display: block;
+	margin: 10px auto;
+	width: 600px;
+}
+
+li{
+	width: 100px;
+	height: 30px;
+	list-style: none;
+	float: left;
+}
+
+li:nth-child(1){ background: rgb(255,131,73); }
+li:nth-child(2){ background: rgb(255,240,73); }
+li:nth-child(3){ background: rgb(139,255,73); }
+li:nth-child(4){ background: rgb(73,255,131); }
+li:nth-child(5){ background: rgb(73,226,255); }
+li:nth-child(6){ background: rgb(73,117,255); }
