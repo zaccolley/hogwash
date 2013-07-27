@@ -41,10 +41,10 @@ main{
 h1{
 	font-family: 'High Pixel';
 	padding: 25px;
-	text-shadow: 0 1px rgba(0,0,0,0.75), 0 -1px rgba(0,0,0,0.75),
-			     1px 0 rgba(0,0,0,0.75), -1px 0 rgba(0,0,0,0.75), 0 0 15px #000;
+	text-shadow: 0 1px #1F1F1F, 0 -1px #1F1F1F,
+			     1px 0 #1F1F1F, -1px 0 #1F1F1F, 0 0 15px #000;
 	font-size: 2em;
-	color: white;
+	color: #F5F5F5;
 	text-align: center;
 	-webkit-animation: fadeIn 5s linear;
 }
