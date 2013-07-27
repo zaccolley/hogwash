@@ -2,9 +2,11 @@
 
 random bits and bobs
 
-## colourthing
+### colourthing
 
 working title, it's going to be a fun game yo
+
+canvas version of this: http://www.flashbynight.com/drench/
 
 ### [greentunic](http://www.zaccolley.com/stuff/foraaron "Birthday present")
 
