@@ -5,13 +5,25 @@ body{ background: #F5F5F5; }
 main{
 	display: block;
 	margin: 10px auto;
-	width: 600px;
+	width: 1010px;
 }
+
+h1{
+	color: rgba(0,0,0,.25);
+	padding: 10px;
+	position: absolute;
+	font-size: 3em;
+	font-family: Helvetica;
+}
+
+canvas, ul{ float: left; }
+
+ul{ margin-left: 10px; width: 400px; }
 
 li{
 	text-indent: -1337px;
-	width: 100px;
-	height: 30px;
+	width: 200px;
+	height: 200px;
 	list-style: none;
 	float: left;
 }

@@ -1,6 +1,19 @@
 (function(){ main(); })() // On load
 
 function main(){
+	game();
+
+	clickCount = 60;
+
+	$('main ul li').click(function(){
+		clickCount--;
+		if(clickCount == 0){ game(); clickCount = 60; }
+		$('h1').html(clickCount + ' clicks left!');
+	});
+
+}
+
+function game(){
 	var canvas = document.getElementById('canvas');
 
 	if (canvas.getContext){
@@ -13,9 +26,6 @@ function main(){
 
 		var items = genItems(ctx, size);
 
-		console.log('Intial:');
-		console.log(items);
-
 		drawGrid(ctx, items, colours);
 
 		// make the first active
@@ -24,8 +34,6 @@ function main(){
 		$('main ul li').click(function(){
 			var colourId = $(this).html();
 			items = affectItems(items, colourId, size);
-			console.log('Affected:');
-			console.log(items);
 			drawGrid(ctx, items, colours);
 		});	
 
@@ -38,7 +46,7 @@ function affectItems(items, colourId, size){
 
 			items[i]['colourId'] = colourId;
 
-			if(items[i]['x'] != 0 && items[i]['y'] != 0){
+			if(items[i]['x'] > 0 && items[i]['y'] > 0){
 				var top = items[i-1];
 				var left = items[i-30];
 
@@ -46,7 +54,7 @@ function affectItems(items, colourId, size){
 				if(left['colourId'] == colourId){ left['active'] = true; }
 			}
 
-			if(items[i]['x'] != size && items[i]['y'] != size){
+			if(items[i]['x'] < size && items[i]['y'] < size){
 				var bottom = items[i+1];
 				var right = items[i+30];
 
