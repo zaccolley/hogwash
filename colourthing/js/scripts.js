@@ -9,47 +9,88 @@ function main(){
 		var size = canvas.width;
 
 		var colours = ['rgb(255,131,73)', 'rgb(255,240,73)', 'rgb(139,255,73)',
-					   'rgb(73,255,131)', 'rgb(73,226,255)', 'rgb(73,117,255)'];
+					   'rgb(73,226,255)', 'rgb(73,117,255)' , 'rgb(224,71,255)'];
 
-		var gridItems = genGrid(ctx, size);
+		var items = genItems(ctx, size);
 
-		drawGrid(ctx, gridItems, colours);
+		console.log('Intial:');
+		console.log(items);
+
+		drawGrid(ctx, items, colours);
+
+		// make the first active
+		items[0]['active'] = true;
 
 		$('main ul li').click(function(){
-			var colour = $(this).css('backgroundColor');
-			drawOver(ctx, gridItems, colour);
+			var colourId = $(this).html();
+			items = affectItems(items, colourId, size);
+			console.log('Affected:');
+			console.log(items);
+			drawGrid(ctx, items, colours);
 		});	
 
 	}
 }
 
-function genGrid(context, size){
-	var gridItems = [];
+function affectItems(items, colourId, size){
+	for(var i = 0; i < items.length; i++){
+		if(items[i]['active']){
 
-	for(var x = 0; x < size; x+=20){
-		for(var y = 0; y < size; y+=20){
-			
+			items[i]['colourId'] = colourId;
+
+			if(items[i]['x'] != 0 && items[i]['y'] != 0){
+				var top = items[i-1];
+				var left = items[i-30];
+
+				if(top['colourId'] == colourId){ top['active'] = true; }
+				if(left['colourId'] == colourId){ left['active'] = true; }
+			}
+
+			if(items[i]['x'] != size && items[i]['y'] != size){
+				var bottom = items[i+1];
+				var right = items[i+30];
+
+				if(bottom['colourId'] == colourId){ bottom['active'] = true; }
+				if(right['colourId'] == colourId){ right['active'] = true; }
+			}
+
+		}
+	}
+	return items;
+}
+
+function genItems(context, size){
+	var items = [];
+
+	for(var x = 0; x < size / 20; x++){
+		for(var y = 0; y < size / 20; y++){
 			var randId = Math.floor(Math.random()*6);
-			var gridItem = [x, y, randId];
+			var active = false;
 
-			gridItems.push(gridItem);
+			var item = new Object();
+			item['x'] = x;
+			item['y'] = y;
+			item['colourId'] = randId;
+			item['active'] = active;
+
+			items.push(item);
 
 		}
 	}
 
-	return gridItems;
+	return items;
 }
 
-function drawGrid(context, gridItems, colours){
-	for(var i = 0; i < gridItems.length; i++){
+function drawGrid(context, items, colours){
+	for(var i = 0; i < items.length; i++){
 
-		var x = gridItems[i][0];
-		var y = gridItems[i][1];
-		var id = gridItems[i][2];
+		var x = items[i]['x'];
+		var y = items[i]['y'];
+		var colourId = items[i]['colourId'];
 
-		var colour = colours[id];
+		var colour = colours[colourId];
 
-		drawSquare(context, x, y, colour);
+		drawSquare(context, x*20, y*20, colour);
 	}
 }
 
@@ -59,7 +100,3 @@ function drawSquare(context, originX, originY, colour){
 	context.fillStyle = colour;
 	context.fillRect(originX, originY, size, size);
 }
-
-function drawOver(context, gridItems, colour){
-	drawSquare(context, gridItems[0][0], gridItems[0][1], colour);
-};
