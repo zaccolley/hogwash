@@ -4,7 +4,7 @@ body{ background: #F5F5F5; }
 
 main{
 	display: block;
-	width: 600px;
+	width: 500px;
 	margin: 10px auto;
 }
 
@@ -19,7 +19,7 @@ h1{
 
 canvas, .buttons{
 	margin-top: 10px;
-	width: 600px;
+	width: 500px;
 	background: #DDD;
 	box-shadow: -5px -5px 0 rgba(0, 0, 0, 0.15);
 }
@@ -28,8 +28,8 @@ canvas, .buttons{
 
 button{
 	cursor: pointer;
-	width: 100px;
-	height: 100px;
+	width: 83px;
+	height: 83px;
 	float: left;
 	border: none;
 	box-shadow: inset -5px -5px 0 rgba(0,0,0,.2);

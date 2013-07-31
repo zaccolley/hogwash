@@ -1,21 +1,17 @@
 (function(){ main(); })() // On load
 
 function main(){
-	var squareSize = 600;
+	var squareSize = 500;
 	var clickCount = 1;
 	game(squareSize, clickCount);
-
-	$('h1').click(function(){
-		squareSize = squareSize / 2;
-		clickCount = clickCount * 3;
-		game(squareSize, clickCount);
-	});
 }
 
 function game(squareSize, clickCount){
 	var canvas = document.getElementById('canvas');
 
 	if (canvas.getContext){
+
+		var intialClickCount = clickCount;
 
 		var ctx = canvas.getContext('2d');
 		var size = canvas.width;
@@ -34,6 +30,8 @@ function game(squareSize, clickCount){
 
 		// make the first active
 		items[0]['active'] = true;
+		var intialColour = items[0]['colourId'];
+		items = affectItems(items, itemAmount, intialColour, size);
 
 		$('h1').html(clickCount + ' clicks left!');
 
@@ -43,11 +41,29 @@ function game(squareSize, clickCount){
 			drawGrid(ctx, items, squareSize, colours);
 
 			clickCount--;
-			if(clickCount == 0){ game(squareSize, clickCount); clickCount = 60; }
 			$('h1').html(clickCount + ' clicks left!');
+			var win = checkWin(items);
+
+			if(win){
+				squareSize = squareSize / 2;
+				clickCount = Math.ceil(intialClickCount * 3);
+				$('h1').html(clickCount + ' clicks left!');
+				game(squareSize, clickCount);
+			}
+
+			if(clickCount == 0){ game(squareSize, intialClickCount); }
 		});	
 
 	}
+}
+
+function checkWin(items){
+	var state = items[0]['active'];
+
+	for(var i = 0; i < items.length - 1; i++){
+		if(state != items[i]['active']){ return false; }
+	}
+	return true;
 }
 
 
