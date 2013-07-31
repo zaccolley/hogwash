@@ -21,19 +21,49 @@ canvas, .buttons{
 	margin-top: 10px;
 	width: 500px;
 	background: #DDD;
-	box-shadow: -5px -5px 0 rgba(0, 0, 0, 0.15);
 }
 
 .buttons{ overflow: hidden; }
 
-button{
-	cursor: pointer;
+.buttons button{
+	
 	width: 83px;
 	height: 83px;
 	float: left;
 	border: none;
-	box-shadow: inset -5px -5px 0 rgba(0,0,0,.2);
 }
 
-button:hover{ box-shadow: inset -3px -3px 0 rgba(0,0,0,.15); }
-button:active{ box-shadow: none; }
+button:hover{ cursor: pointer; opacity: .8; }
+
+.win-lose{
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 200px 0;
+	opacity: 0;
+	width: 0%;
+	position: absolute;
+	top: 0; left: 0;
+	right: 0; bottom: 0;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.69);
+	text-transform: uppercase;
+	transition: width .5s, opacity .5s;
+}
+
+.win-lose-visible{ width: 100%; opacity: 1; }
+
+.win-lose h2{	
+	font-family: helvetica;
+	font-size: 5em;
+	color: rgba(77, 77, 77, 1);
+}
+
+.win-lose button{
+	background: #DDD;
+	border: none;
+	width: 25%;
+	margin: 25px auto;
+	font-size: 1.5em;
+	padding: 10px;
+	color: rgb(95, 95, 95);
+}

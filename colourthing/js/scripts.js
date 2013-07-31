@@ -4,6 +4,8 @@ function main(){
 	var squareSize = 500;
 	var clickCount = 1;
 	game(squareSize, clickCount);
+
+	$('.win-lose button').click(function(){ game(squareSize, clickCount); $(this).parent().removeClass('win-lose-visible'); });
 }
 
 function game(squareSize, clickCount){
@@ -45,13 +47,14 @@ function game(squareSize, clickCount){
 			var win = checkWin(items);
 
 			if(win){
+				$('.win-lose').addClass('win-lose-visible'); $('.win-lose h2').html('WIN!');
 				squareSize = squareSize / 2;
 				clickCount = Math.ceil(intialClickCount * 3);
 				$('h1').html(clickCount + ' clicks left!');
 				game(squareSize, clickCount);
 			}
 
-			if(clickCount == 0){ game(squareSize, intialClickCount); }
+			if(clickCount == 0){ $('.win-lose').addClass('win-lose-visible'); $('.win-lose h2').html('LOSE!'); }
 		});	
 
 	}
