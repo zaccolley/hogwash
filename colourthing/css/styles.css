@@ -2,35 +2,30 @@
 
 body{ background: #F5F5F5; }
 
-main{
-	display: block;
-	margin: 10px auto;
-	width: 1010px;
-}
+main{ display: block; }
 
 h1{
 	color: rgba(0,0,0,.25);
 	padding: 10px;
-	position: absolute;
 	font-size: 3em;
 	font-family: Helvetica;
 }
 
 canvas, ul{ float: left; }
 
-ul{ margin-left: 10px; width: 400px; }
-
-li{
-	text-indent: -1337px;
-	width: 200px;
-	height: 200px;
-	list-style: none;
-	float: left;
+.buttons{
+	overflow: hidden;
+	width: 400px;
 }
 
-li:nth-child(1){ background: rgb(255,131,73); }
-li:nth-child(2){ background: rgb(255,240,73); }
-li:nth-child(3){ background: rgb(139,255,73); }
-li:nth-child(4){ background: rgb(73,226,255); }
-li:nth-child(5){ background: rgb(73,117,255); }
-li:nth-child(6){ background: rgb(224,71,255); } 
+button{
+	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	float: left;
+	border: none;
+	box-shadow: inset -5px -5px 0 rgba(0,0,0,.2);
+}
+
+button:hover{ box-shadow: inset -5px -5px 0 rgba(0,0,0,.15); }
+button:active{ box-shadow: inset -2px -2px 0 rgba(0,0,0,.25); }

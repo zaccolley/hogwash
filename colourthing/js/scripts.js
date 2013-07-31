@@ -20,35 +20,51 @@ function game(){
 
 		var ctx = canvas.getContext('2d');
 		var size = canvas.width;
+		
+		var squareSize = 20;
+		var itemAmount = size / squareSize;
 
 		var colours = ['rgb(255,131,73)', 'rgb(255,240,73)', 'rgb(139,255,73)',
 					   'rgb(73,226,255)', 'rgb(73,117,255)' , 'rgb(224,71,255)'];
 
-		var items = genItems(ctx, size);
+		generateButtons(colours);
 
-		drawGrid(ctx, items, colours);
+		var items = genItems(ctx, itemAmount, colours);
+
+		drawGrid(ctx, items, squareSize, colours);
 
 		// make the first active
 		items[0]['active'] = true;
 
-		$('main ul li').click(function(){
-			var colourId = $(this).html();
-			items = affectItems(items, colourId, size);
-			drawGrid(ctx, items, colours);
+		$('button').click(function(){
+			var colourId = $(this).val();
+			items = affectItems(items, itemAmount, colourId, size);
+			drawGrid(ctx, items, squareSize, colours);
 		});	
 
 	}
 }
 
-function affectItems(items, colourId, size){
+function generateButtons(colours){
+	for(var i = 0; i < colours.length; i++){
+		$('<button style="background-color:'+colours[i]+';" value="'+i+'">').appendTo('.buttons');
+	}
+}
+
+function affectItems(items, itemAmount, colourId, size){
+	console.log('------');
 	for(var i = 0; i < items.length; i++){
 		if(items[i]['active']){
+			console.log(i, ' =========');
 
 			items[i]['colourId'] = colourId;
 
 			if(items[i]['x'] > 0 && items[i]['y'] > 0){
 				var top = items[i-1];
-				var left = items[i-30];
+				var left = items[i-itemAmount];
+				
+				console.log('top', bottom);
+				console.log('left', right);
 
 				if(top['colourId'] == colourId){ top['active'] = true; }
 				if(left['colourId'] == colourId){ left['active'] = true; }
@@ -56,23 +72,28 @@ function affectItems(items, colourId, size){
 
 			if(items[i]['x'] < size && items[i]['y'] < size){
 				var bottom = items[i+1];
-				var right = items[i+30];
+				var right = items[i+itemAmount];
+				console.log('bottom', bottom);
+				console.log('right', right);
 
 				if(bottom['colourId'] == colourId){ bottom['active'] = true; }
 				if(right['colourId'] == colourId){ right['active'] = true; }
 			}
+
+			// if block is surrounded by actives make it no longer active
 
 		}
 	}
 	return items;
 }
 
-function genItems(context, size){
+function genItems(context, itemAmount, colours){
 	var items = [];
+	var colourAmount = colours.length;
 
-	for(var x = 0; x < size / 20; x++){
-		for(var y = 0; y < size / 20; y++){
-			var randId = Math.floor(Math.random()*6);
+	for(var x = 0; x < itemAmount; x++){
+		for(var y = 0; y < itemAmount; y++){
+			var randId = Math.floor(Math.random() * colourAmount);
 			var active = false;
 
 			var item = new Object();
@@ -89,7 +110,7 @@ function genItems(context, size){
 	return items;
 }
 
-function drawGrid(context, items, colours){
+function drawGrid(context, items, squareSize, colours){
 	for(var i = 0; i < items.length; i++){
 
 		var x = items[i]['x'];
@@ -98,13 +119,11 @@ function drawGrid(context, items, colours){
 
 		var colour = colours[colourId];
 
-		drawSquare(context, x*20, y*20, colour);
+		drawSquare(context, squareSize, x * squareSize, y * squareSize, colour);
 	}
 }
 
-function drawSquare(context, originX, originY, colour){
-	var size = 20;
-
+function drawSquare(context, size, originX, originY, colour){
 	context.fillStyle = colour;
 	context.fillRect(originX, originY, size, size);
 }
