@@ -1,19 +1,18 @@
 (function(){ main(); })() // On load
 
 function main(){
-	game();
+	var squareSize = 600;
+	var clickCount = 1;
+	game(squareSize, clickCount);
 
-	clickCount = 60;
-
-	$('main ul li').click(function(){
-		clickCount--;
-		if(clickCount == 0){ game(); clickCount = 60; }
-		$('h1').html(clickCount + ' clicks left!');
+	$('h1').click(function(){
+		squareSize = squareSize / 2;
+		clickCount = clickCount * 3;
+		game(squareSize, clickCount);
 	});
-
 }
 
-function game(){
+function game(squareSize, clickCount){
 	var canvas = document.getElementById('canvas');
 
 	if (canvas.getContext){
@@ -21,7 +20,7 @@ function game(){
 		var ctx = canvas.getContext('2d');
 		var size = canvas.width;
 		
-		var squareSize = 20;
+		
 		var itemAmount = size / squareSize;
 
 		var colours = ['rgb(255,131,73)', 'rgb(255,240,73)', 'rgb(139,255,73)',
@@ -36,16 +35,24 @@ function game(){
 		// make the first active
 		items[0]['active'] = true;
 
+		$('h1').html(clickCount + ' clicks left!');
+
 		$('button').click(function(){
 			var colourId = $(this).val();
 			items = affectItems(items, itemAmount, colourId, size);
 			drawGrid(ctx, items, squareSize, colours);
+
+			clickCount--;
+			if(clickCount == 0){ game(squareSize, clickCount); clickCount = 60; }
+			$('h1').html(clickCount + ' clicks left!');
 		});	
 
 	}
 }
 
+
 function generateButtons(colours){
+	$('.buttons').html('');
 	for(var i = 0; i < colours.length; i++){
 		$('<button style="background-color:'+colours[i]+';" value="'+i+'">').appendTo('.buttons');
 	}
@@ -55,29 +62,38 @@ function affectItems(items, itemAmount, colourId, size){
 	console.log('------');
 	for(var i = 0; i < items.length; i++){
 		if(items[i]['active']){
-			console.log(i, ' =========');
+			console.log(i);
 
 			items[i]['colourId'] = colourId;
 
-			if(items[i]['x'] > 0 && items[i]['y'] > 0){
-				var top = items[i-1];
+			if(items[i]['x'] > 0){
 				var left = items[i-itemAmount];
+				console.log('left', left);
 				
-				console.log('top', bottom);
-				console.log('left', right);
-
-				if(top['colourId'] == colourId){ top['active'] = true; }
 				if(left['colourId'] == colourId){ left['active'] = true; }
 			}
 
-			if(items[i]['x'] < size && items[i]['y'] < size){
-				var bottom = items[i+1];
+			if(items[i]['y'] > 0){
+				var top = items[i-1];
+				console.log('top', top);
+
+				if(top['colourId'] == colourId){ top['active'] = true; }
+			}
+
+			console.log('x: ', items[i]['x'], 'y: ', items[i]['y'], itemAmount);
+
+			if(items[i]['x'] < itemAmount-1){
 				var right = items[i+itemAmount];
-				console.log('bottom', bottom);
 				console.log('right', right);
+				
+				if(right['colourId'] == colourId){ right['active'] = true; }
+			}
+
+			if(items[i]['y'] < itemAmount-1){
+				var bottom = items[i+1];
+				console.log('bottom', bottom);
 
 				if(bottom['colourId'] == colourId){ bottom['active'] = true; }
-				if(right['colourId'] == colourId){ right['active'] = true; }
 			}
 
 			// if block is surrounded by actives make it no longer active

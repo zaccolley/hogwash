@@ -2,21 +2,29 @@
 
 body{ background: #F5F5F5; }
 
-main{ display: block; }
+main{
+	display: block;
+	width: 600px;
+	margin: 10px auto;
+}
 
 h1{
-	color: rgba(0,0,0,.25);
+	color: #707070;
 	padding: 10px;
-	font-size: 3em;
+	font-size: 1.5em;
 	font-family: Helvetica;
+	text-align: center;
+	text-transform: uppercase;
 }
 
-canvas, ul{ float: left; }
-
-.buttons{
-	overflow: hidden;
-	width: 400px;
+canvas, .buttons{
+	margin-top: 10px;
+	width: 600px;
+	background: #DDD;
+	box-shadow: -5px -5px 0 rgba(0, 0, 0, 0.15);
 }
+
+.buttons{ overflow: hidden; }
 
 button{
 	cursor: pointer;
@@ -27,5 +35,5 @@ button{
 	box-shadow: inset -5px -5px 0 rgba(0,0,0,.2);
 }
 
-button:hover{ box-shadow: inset -5px -5px 0 rgba(0,0,0,.15); }
-button:active{ box-shadow: inset -2px -2px 0 rgba(0,0,0,.25); }
+button:hover{ box-shadow: inset -3px -3px 0 rgba(0,0,0,.15); }
+button:active{ box-shadow: none; }
