@@ -5,6 +5,7 @@ function main(){
 	var clickCount = 1;
 	game(squareSize, clickCount);
 }
+
 function game(squareSize, clickCount){
 	var canvas = document.getElementById('canvas');
 
