@@ -24,9 +24,7 @@ function game(squareSize, clickCount){
 					   'rgb(73,226,255)', 'rgb(73,117,255)' , 'rgb(224,71,255)'];
 
 		var colourSeed = Math.floor(Math.random()*360);
-		console.log(colourSeed);
 		colours = genColours(colourSeed);
-		console.log(colours);
 
 		genButtons(colours);
 
@@ -37,6 +35,7 @@ function game(squareSize, clickCount){
 		// make the first active
 		items[0]['active'] = true;
 		var intialColour = items[0]['colourId'];
+
 		items = affectItems(items, itemAmount, intialColour, size);
 
 		$('h1').html(clickCount + ' clicks left!');
@@ -50,8 +49,8 @@ function game(squareSize, clickCount){
 			$('h1').html(clickCount + ' clicks left!');
 
 			var win = checkWin(items);
-			var lose = (clickCount < 0);
-			console.log('win/lose: ', win, lose);
+			var lose = (clickCount <= 0);
+			console.log('win: ', win, 'lose: ', lose);
 
 			if(win){
 				squareSize = squareSize / 2;
@@ -73,7 +72,7 @@ function game(squareSize, clickCount){
 function checkWin(items){
 	var state = items[0]['colourId'];
 
-	for(var i = 1; i < items.length; i++){
+	for(var i = 0; i < items.length; i++){
 		if(state != items[i]['colourId']){ return false; }
 	}
 	return true;
@@ -84,6 +83,10 @@ function affectItems(items, itemAmount, colourId, size){
 	for(var i = 0; i < items.length; i++){
 		if(items[i]['active']){
 			console.log(i);
+
+			// resets
+			var left = null; var top = null;
+			var right = null;	var bottom = null;
 
 			items[i]['colourId'] = colourId;
 
@@ -117,7 +120,10 @@ function affectItems(items, itemAmount, colourId, size){
 				if(bottom['colourId'] == colourId){ bottom['active'] = true; }
 			}
 
-			// if block is surrounded by actives make it no longer active
+			// if the active block is surrounded in other active blocks deactive it
+			if(left && top && right && bottom){
+				items[i]['active'] == false;
+			}
 
 		}
 	}
@@ -186,7 +192,6 @@ function genColours(seed){
 		var r = Math.floor(rgb[0]);
 		var g = Math.floor(rgb[1]);
 		var b = Math.floor(rgb[2]);
-		console.log(r, g, b);
 
 		colours.push('rgb('+r+','+g+','+b+')')
 	}
