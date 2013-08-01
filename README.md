@@ -2,10 +2,9 @@
 
 random bits and bobs
 
-### flod
+### [flod](http://www.zaccolley.com/flod
 
-I wanted to make an improved version [of a flash game I played](http://www.flashbynight.com/drench/). This was also an experiment with using canvas.
-canvas version of this: 
+i wanted to make an improved version [of a flash game I played](http://www.flashbynight.com/drench/). this was also an experiment with using canvas.
 
 ### [greentunic](http://www.zaccolley.com/stuff/foraaron "Birthday present")
 
