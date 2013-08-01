@@ -1,7 +1,7 @@
 (function(){ main(); })() // On load
 
 function main(){
-	var squareSize = 500;
+	var squareSize = 600;
 	var clickCount = 1;
 	game(squareSize, clickCount);
 }
@@ -38,7 +38,7 @@ function game(squareSize, clickCount){
 
 		items = affectItems(items, itemAmount, intialColour, size);
 
-		$('h1').html(clickCount + ' clicks left!');
+		$('.counter').html(clickCount + ' clicks left!');
 
 		$('button').click(function(){
 			var colourId = $(this).val();
@@ -46,22 +46,41 @@ function game(squareSize, clickCount){
 			drawGrid(ctx, items, squareSize, colours);
 
 			clickCount--;
-			$('h1').html(clickCount + ' clicks left!');
+			if(clickCount < 0){ clickCount = 0; }
+			$('.counter').html(clickCount + ' clicks left!');
 
 			var win = checkWin(items);
 			var lose = (clickCount <= 0);
 			console.log('win: ', win, 'lose: ', lose);
 
-			if(win){
-				squareSize = squareSize / 2;
-				clickCount = Math.ceil(intialClickCount * 3);
-				$('h1').html(clickCount + ' clicks left!');
-				game(squareSize, clickCount);
+			$('.win-lose button').click(function(){
+				if($(this).hasClass('win-button')){
+					squareSize = squareSize / 2;
+					clickCount = Math.ceil(intialClickCount * 3);
+					game(squareSize, clickCount);
+				}else if($(this).hasClass('lose-button')){
+					game(squareSize, intialClickCount);
+				}
+				$('.win-lose').removeClass('win-lose-visible');
+			});
+
+
+
+			if(win || lose){
+				$('.win-lose').addClass('win-lose-visible');				
+				$('.counter').html(clickCount + ' clicks left!');				
 			}
 
-			if(lose){
-				$('h1').html(clickCount + ' clicks left!');
-				game(squareSize, intialClickCount);
+			// reset
+			$('.win-lose button').removeClass();
+
+			if(win){
+				$('.win-lose h2').html('You win! :D');
+				$('.win-lose button').addClass('win-button').html('Continue');
+			}
+			else if(lose){
+				$('.win-lose h2').html('You lost... :(');
+				$('.win-lose button').addClass('lose-button').html('Try again');
 			}
 
 		});	
