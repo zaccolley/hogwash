@@ -2,7 +2,7 @@
 
 random bits and bobs
 
-### [flod](http://www.zaccolley.com/flod
+### [flod](http://www.zaccolley.com/flod)
 
 i wanted to make an improved version [of a flash game I played](http://www.flashbynight.com/drench/). this was also an experiment with using canvas.
 
