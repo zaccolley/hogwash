@@ -37,7 +37,7 @@ canvas, .buttons{
 	background: #DDD;
 }
 
-.buttons{ overflow: hidden; border-bottom: 6px solid #BBB; }
+.buttons{ overflow: hidden; }
 
 .buttons button{	
 	width: 16.66%;

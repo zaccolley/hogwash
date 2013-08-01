@@ -30,17 +30,17 @@ function game(squareSize, clickCount){
 
 		var items = genItems(ctx, itemAmount, colours);
 
-		drawGrid(ctx, items, squareSize, colours);
-
 		// make the first active
 		items[0]['active'] = true;
 		var intialColour = items[0]['colourId'];
-
 		items = affectItems(items, itemAmount, intialColour, size);
+
+		drawGrid(ctx, items, squareSize, colours);
 
 		$('.counter').html(clickCount + ' clicks left!');
 
 		$('button').click(function(){
+
 			var colourId = $(this).val();
 			items = affectItems(items, itemAmount, colourId, size);
 			drawGrid(ctx, items, squareSize, colours);
@@ -139,11 +139,6 @@ function affectItems(items, itemAmount, colourId, size){
 				if(bottom['colourId'] == colourId){ bottom['active'] = true; }
 			}
 
-			// if the active block is surrounded in other active blocks deactive it
-			if(left && top && right && bottom){
-				items[i]['active'] == false;
-			}
-
 		}
 	}
 	return items;
@@ -173,16 +168,26 @@ function genItems(context, itemAmount, colours){
 }
 
 function drawGrid(context, items, squareSize, colours){
-	for(var i = 0; i < items.length; i++){
 
-		var x = items[i]['x'];
-		var y = items[i]['y'];
-		var colourId = items[i]['colourId'];
+	for(var i = 0; i < items.length; i++){
+		var item = items[i];
+
+		var x = item['x'];
+		var y = item['y'];
+		var colourId = item['colourId'];
+		var active = item['active'];
 
 		var colour = colours[colourId];
 
 		drawSquare(context, squareSize, x * squareSize, y * squareSize, colour);
+
+		// if(active){ drawPattern(context, squareSize, x * squareSize, y * squareSize); }
 	}
+}
+
+function drawPattern(context, size, originX, originY){
+	context.fillStyle = 'rgba(255,255,255,0.1)'
+	context.fillRect(originX + size / 4, size / 4, size / 2, size / 2);
 }
 
 function drawSquare(context, size, originX, originY, colour){
