@@ -205,18 +205,11 @@ main{
 
 h1{
 	padding: 25px;
-<<<<<<< HEAD
-	text-shadow: 0 1px #1F1F1F, 0 -1px #1F1F1F,
-			     1px 0 #1F1F1F, -1px 0 #1F1F1F, 0 0 15px #000;
-	font-size: 2em;
-	color: #F5F5F5;
-=======
 	padding-top: 25px;
 	font-family: 'High Pixel', Helvetica, Arial, sans-serif;
 	font-size: 2em;
 	line-height: 1.1em;
 	color: #B9FF8B;
->>>>>>> 7878b8fd5e78f3444df2b9e72a63cb9bc9b6f963
 	text-align: center;
 	text-transform: uppercase;
 	text-shadow: 0 1px rgba(0,0,0,.75), 0 -1px rgba(0,0,0,.75),
