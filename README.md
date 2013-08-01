@@ -2,11 +2,10 @@
 
 random bits and bobs
 
-### colourthing
+### flod
 
-working title, it's going to be a fun game yo
-
-canvas version of this: http://www.flashbynight.com/drench/
+I wanted to make an improved version [of a flash game I played](http://www.flashbynight.com/drench/). This was also an experiment with using canvas.
+canvas version of this: 
 
 ### [greentunic](http://www.zaccolley.com/stuff/foraaron "Birthday present")
 
