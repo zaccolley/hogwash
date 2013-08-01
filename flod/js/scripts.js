@@ -5,7 +5,6 @@ function main(){
 	var clickCount = 1;
 	game(squareSize, clickCount);
 }
-
 function game(squareSize, clickCount){
 	var canvas = document.getElementById('canvas');
 
@@ -21,7 +20,11 @@ function game(squareSize, clickCount){
 
 		var colourSeed = Math.floor(Math.random()*360);
 		var colourAmount = 4;
-		colours = genColours(colourSeed, 4);
+
+		if(colourAmount > 9){ colourAmount = 9; }
+		if(colourAmount < 1){ colourAmount = 1; }
+
+		colours = genColours(colourSeed, colourAmount);
 
 		genButtons(colours);
 		$('.buttons button').css('width', (100/colours.length)+'%');
@@ -63,7 +66,6 @@ function game(squareSize, clickCount){
 			});
 
 
-
 			if(win || lose){
 				$('.win-lose').addClass('win-lose-visible');				
 				$('.counter').html(clickCount + ' clicks left!');				
@@ -71,9 +73,11 @@ function game(squareSize, clickCount){
 
 			// reset
 			$('.win-lose button').removeClass();
+			$('.win-lose p').html('');
 
 			if(win){
 				$('.win-lose h2').html('You win! :D');
+				$('.win-lose p').html('You even had '+clickCount+ ' clicks left!');
 				$('.win-lose button').addClass('win-button').html('Continue');
 			}
 			else if(lose){
@@ -195,8 +199,9 @@ function drawSquare(context, size, originX, originY, colour){
 
 function genButtons(colours){
 	$('.buttons').html('');
+	var buttonChars = 'asdfghjkl';
 	for(var i = 0; i < colours.length; i++){
-		$('<button style="background-color:'+colours[i]+';" value="'+i+'">').appendTo('.buttons');
+		$('<button style="background-color:'+colours[i]+';" value="'+i+'">'+buttonChars.charAt(i)+'</button>').appendTo('.buttons');
 	}
 }
 
