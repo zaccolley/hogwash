@@ -4,8 +4,6 @@ function main(){
 	var squareSize = 500;
 	var clickCount = 1;
 	game(squareSize, clickCount);
-
-	$('.win-lose button').click(function(){ game(squareSize, clickCount); $(this).parent().removeClass('win-lose-visible'); });
 }
 
 function game(squareSize, clickCount){
@@ -21,12 +19,16 @@ function game(squareSize, clickCount){
 		
 		var itemAmount = size / squareSize;
 
-		var colourSeed = 
 
 		var colours = ['rgb(255,131,73)', 'rgb(255,240,73)', 'rgb(139,255,73)',
 					   'rgb(73,226,255)', 'rgb(73,117,255)' , 'rgb(224,71,255)'];
 
-		generateButtons(colours);
+		var colourSeed = Math.floor(Math.random()*360);
+		console.log(colourSeed);
+		colours = genColours(colourSeed);
+		console.log(colours);
+
+		genButtons(colours);
 
 		var items = genItems(ctx, itemAmount, colours);
 
@@ -46,49 +48,35 @@ function game(squareSize, clickCount){
 
 			clickCount--;
 			$('h1').html(clickCount + ' clicks left!');
+
 			var win = checkWin(items);
+			var lose = (clickCount < 0);
+			console.log('win/lose: ', win, lose);
 
 			if(win){
-				$('.win-lose').addClass('win-lose-visible'); $('.win-lose h2').html('WIN!');
 				squareSize = squareSize / 2;
 				clickCount = Math.ceil(intialClickCount * 3);
 				$('h1').html(clickCount + ' clicks left!');
 				game(squareSize, clickCount);
 			}
 
-			if(clickCount == 0){ $('.win-lose').addClass('win-lose-visible'); $('.win-lose h2').html('LOSE!'); }
+			if(lose){
+				$('h1').html(clickCount + ' clicks left!');
+				game(squareSize, intialClickCount);
+			}
+
 		});	
 
 	}
 }
 
-function genColours(seed){
-	var colours = [];
-	for(var i = 0; i < 6; i++){
-		var h = seed + (i * 60);
-		var s = 40; var l = 40;
-
-		var rgb = hslToRgb(h, s, l);
-
-		colours.push('rgb('+rgb[0]+','+rgb[1]+')')
-	}
-}
-
 function checkWin(items){
-	var state = items[0]['active'];
+	var state = items[0]['colourId'];
 
-	for(var i = 0; i < items.length - 1; i++){
-		if(state != items[i]['active']){ return false; }
+	for(var i = 1; i < items.length; i++){
+		if(state != items[i]['colourId']){ return false; }
 	}
 	return true;
-}
-
-
-function generateButtons(colours){
-	$('.buttons').html('');
-	for(var i = 0; i < colours.length; i++){
-		$('<button style="background-color:'+colours[i]+';" value="'+i+'">').appendTo('.buttons');
-	}
 }
 
 function affectItems(items, itemAmount, colourId, size){
@@ -175,6 +163,34 @@ function drawGrid(context, items, squareSize, colours){
 function drawSquare(context, size, originX, originY, colour){
 	context.fillStyle = colour;
 	context.fillRect(originX, originY, size, size);
+}
+
+function genButtons(colours){
+	$('.buttons').html('');
+	for(var i = 0; i < colours.length; i++){
+		$('<button style="background-color:'+colours[i]+';" value="'+i+'">').appendTo('.buttons');
+	}
+}
+
+function genColours(seed){
+	var colours = [];
+	for(var i = 0; i < 6; i++){
+		var h = (seed + (i * 60)) / 360;
+		var s = 0.6; var l = 0.6;
+
+		if(h > 360){ h = 360; }
+		if(h < 0){ h = 0; }
+
+		var rgb = hslToRgb(h, s, l);
+
+		var r = Math.floor(rgb[0]);
+		var g = Math.floor(rgb[1]);
+		var b = Math.floor(rgb[2]);
+		console.log(r, g, b);
+
+		colours.push('rgb('+r+','+g+','+b+')')
+	}
+	return colours;
 }
 
 function hslToRgb(h, s, l){
