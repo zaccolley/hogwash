@@ -19,14 +19,12 @@ function game(squareSize, clickCount){
 		
 		var itemAmount = size / squareSize;
 
-
-		var colours = ['rgb(255,131,73)', 'rgb(255,240,73)', 'rgb(139,255,73)',
-					   'rgb(73,226,255)', 'rgb(73,117,255)' , 'rgb(224,71,255)'];
-
 		var colourSeed = Math.floor(Math.random()*360);
-		colours = genColours(colourSeed);
+		var colourAmount = 4;
+		colours = genColours(colourSeed, 4);
 
 		genButtons(colours);
+		$('.buttons button').css('width', (100/colours.length)+'%');
 
 		var items = genItems(ctx, itemAmount, colours);
 
@@ -56,7 +54,7 @@ function game(squareSize, clickCount){
 			$('.win-lose button').click(function(){
 				if($(this).hasClass('win-button')){
 					squareSize = squareSize / 2;
-					clickCount = Math.ceil(intialClickCount * 3);
+					clickCount = Math.ceil((intialClickCount + 1) * (intialClickCount + 1));
 					game(squareSize, clickCount);
 				}else if($(this).hasClass('lose-button')){
 					game(squareSize, intialClickCount);
@@ -202,10 +200,10 @@ function genButtons(colours){
 	}
 }
 
-function genColours(seed){
+function genColours(seed, amount){
 	var colours = [];
-	for(var i = 0; i < 6; i++){
-		var h = (seed + (i * 60)) / 360;
+	for(var i = 0; i < amount; i++){
+		var h = (seed + (i * (360 / amount))) / 360;
 		var s = 0.6; var l = 0.6;
 
 		if(h > 360){ h = 360; }

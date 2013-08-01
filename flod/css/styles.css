@@ -39,8 +39,7 @@ canvas, .buttons{
 
 .buttons{ overflow: hidden; }
 
-.buttons button{	
-	width: 16.66%;
+.buttons button{
 	height: 100px;
 	float: left;
 	border: none;
