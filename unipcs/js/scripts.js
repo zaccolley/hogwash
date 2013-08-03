@@ -76,7 +76,7 @@ $.get('data.php', function(data){
 		var percentPretty = Math.floor(percent)+'%';
 
 		if(build.avail){
-			var output = build.pcs.free +'/'+ build.pcs.total + ' <span>('+percentPretty+')</span>';
+			var output = build.pcs.free +' / '+ build.pcs.total + ' available <span>('+percentPretty+')</span>';
 
 			var colourHue = percent * 0.8;
 			var colour = 'hsl('+colourHue+', 60%, 60%)';
