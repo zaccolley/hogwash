@@ -3,10 +3,11 @@
 function main(){
 	var itemAmount = 2;
 	var tryCount = 4;
-	game(true, itemAmount, tryCount);
+	var colourSeed = Math.floor(Math.random()*360);
+	game(true, colourSeed, itemAmount, tryCount);
 }
 
-function game(intial, itemAmount, tryCount){
+function game(intial, colourSeed, itemAmount, tryCount){
 	var canvas = document.getElementById('canvas');
 
 	if(canvas.getContext){
@@ -20,8 +21,7 @@ function game(intial, itemAmount, tryCount){
 		ctx.clearRect(0, 0, size, size);
 
 		var squareSize = size / itemAmount;
-
-		var colourSeed = Math.floor(Math.random()*360);
+		
 		var colourAmount = 4;
 
 		if(colourAmount > 9){ colourAmount = 9; }
@@ -30,7 +30,9 @@ function game(intial, itemAmount, tryCount){
 		colours = genColours(colourSeed, colourAmount);
 
 		genButtons(colours);
-		$('.buttons button').css('width', (100/colours.length)+'%');
+		var buttonSize = (100 / colours.length)+'%';
+		$('.input-button').css('width', buttonSize);
+		$('.input-button').css('height', $('.input-button').css('width'));
 
 		var items = genItems(ctx, itemAmount, colours);
 
@@ -77,11 +79,11 @@ function game(intial, itemAmount, tryCount){
 			if(win){
 				$('.win-lose h2').html('You win! :D');
 				$('.win-lose p').html('You even had '+tryCount+ ' tries left!');
-				$('.win-lose button').addClass('win-button').html('Continue (enter)');
+				$('.win-lose button').addClass('win-button').html('Continue <span>[space]</span>');
 			}
 			else if(lose){
 				$('.win-lose h2').html('You lost... :(');
-				$('.win-lose button').addClass('lose-button').html('Try again (enter)');
+				$('.win-lose button').addClass('lose-button').html('Try again <span>[space]</span>');
 			}
 
 		});
@@ -90,9 +92,9 @@ function game(intial, itemAmount, tryCount){
 			if($('.win-lose button').hasClass('win-button')){
 				itemAmount += 1;
 				tryCount = Math.ceil(intialTryCount * 1.5);
-				game(false, itemAmount, tryCount);
+				game(false, colourSeed, itemAmount, tryCount);
 			}else if($('.win-lose button').hasClass('lose-button')){
-				game(false, itemAmount, intialTryCount);
+				game(false, colourSeed, itemAmount, intialTryCount);
 			}
 
 			$('.win-lose button').removeClass();
@@ -134,23 +136,23 @@ function game(intial, itemAmount, tryCount){
 					if(win){
 						$('.win-lose h2').html('You win! :D');
 						$('.win-lose p').html('You even had '+tryCount+ ' tries left!');
-						$('.win-lose button').addClass('win-button').html('Continue (enter)');
+						$('.win-lose button').addClass('win-button').html('Continue <span>[space]</span>');
 					}
 					else if(lose){
 						$('.win-lose h2').html('You lost... :(');
-						$('.win-lose button').addClass('lose-button').html('Try again (enter)');
+						$('.win-lose button').addClass('lose-button').html('Try again <span>[space]</span>');
 					}
 
 				}
 
-			}else if(key == 13){
+			}else if(key == 13 || key == 32){
 
 				if($('.win-lose button').hasClass('win-button')){
 					itemAmount += 1;
 					tryCount = Math.ceil(intialTryCount * 1.5);
-					game(false, itemAmount, tryCount);
+					game(false, colourSeed, itemAmount, tryCount);
 				}else if($('.win-lose button').hasClass('lose-button')){
-					game(false, itemAmount, intialTryCount);
+					game(false, colourSeed, itemAmount, intialTryCount);
 				}
 
 				$('.win-lose button').removeClass();
