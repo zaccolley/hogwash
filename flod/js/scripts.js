@@ -1,23 +1,25 @@
 (function(){ main(); })() // On load
 
 function main(){
-	var squareSize = 600;
-	var clickCount = 1;
-	game(squareSize, clickCount);
+	var itemAmount = 2;
+	var tryCount = 4;
+	game(true, itemAmount, tryCount);
 }
 
-function game(squareSize, clickCount){
+function game(intial, itemAmount, tryCount){
 	var canvas = document.getElementById('canvas');
 
-	if (canvas.getContext){
+	if(canvas.getContext){
 
-		var intialClickCount = clickCount;
+		var intialTryCount = tryCount;
 
 		var ctx = canvas.getContext('2d');
 		var size = canvas.width;
-		
-		
-		var itemAmount = size / squareSize;
+
+		// clear the canvas
+		ctx.clearRect(0, 0, size, size);
+
+		var squareSize = size / itemAmount;
 
 		var colourSeed = Math.floor(Math.random()*360);
 		var colourAmount = 4;
@@ -34,42 +36,38 @@ function game(squareSize, clickCount){
 
 		// make the first active
 		items[0]['active'] = true;
+
+		if(intial){
+			items[0]['colourId'] = 0;
+			items[1]['colourId'] = 1;
+			items[2]['colourId'] = 2;
+			items[3]['colourId'] = 3;
+		}
+
 		var intialColour = items[0]['colourId'];
 		items = affectItems(items, itemAmount, intialColour, size);
 
 		drawGrid(ctx, items, squareSize, colours);
 
-		$('.counter').html(clickCount + ' clicks left!');
+		$('.counter').html(tryCount + ' tries left!');
 
-		$('button').click(function(){
+		$('button').unbind().click(function(){
 
 			var colourId = $(this).val();
 			items = affectItems(items, itemAmount, colourId, size);
 			drawGrid(ctx, items, squareSize, colours);
 
-			clickCount--;
-			if(clickCount < 0){ clickCount = 0; }
-			$('.counter').html(clickCount + ' clicks left!');
+			tryCount--;
+			if(tryCount < 0){ tryCount = 0; }
+			$('.counter').html(tryCount + ' tries left!');
 
 			var win = checkWin(items);
-			var lose = (clickCount <= 0);
+			var lose = (tryCount <= 0);
 			console.log('win: ', win, 'lose: ', lose);
-
-			$('.win-lose button').click(function(){
-				if($(this).hasClass('win-button')){
-					squareSize = squareSize / 2;
-					clickCount = Math.ceil((intialClickCount + 1) * (intialClickCount + 1));
-					game(squareSize, clickCount);
-				}else if($(this).hasClass('lose-button')){
-					game(squareSize, intialClickCount);
-				}
-				$('.win-lose').removeClass('win-lose-visible');
-			});
-
 
 			if(win || lose){
 				$('.win-lose').addClass('win-lose-visible');				
-				$('.counter').html(clickCount + ' clicks left!');				
+				$('.counter').html(tryCount + ' tries left!');				
 			}
 
 			// reset
@@ -78,16 +76,84 @@ function game(squareSize, clickCount){
 
 			if(win){
 				$('.win-lose h2').html('You win! :D');
-				$('.win-lose p').html('You even had '+clickCount+ ' clicks left!');
-				$('.win-lose button').addClass('win-button').html('Continue');
+				$('.win-lose p').html('You even had '+tryCount+ ' tries left!');
+				$('.win-lose button').addClass('win-button').html('Continue (enter)');
 			}
 			else if(lose){
 				$('.win-lose h2').html('You lost... :(');
-				$('.win-lose button').addClass('lose-button').html('Try again');
+				$('.win-lose button').addClass('lose-button').html('Try again (enter)');
 			}
 
-		});	
+		});
 
+		$('.win-lose button').unbind().click(function(){
+			if($('.win-lose button').hasClass('win-button')){
+				itemAmount += 1;
+				tryCount = Math.ceil(intialTryCount * 1.5);
+				game(false, itemAmount, tryCount);
+			}else if($('.win-lose button').hasClass('lose-button')){
+				game(false, itemAmount, intialTryCount);
+			}
+
+			$('.win-lose button').removeClass();
+			$('.win-lose').removeClass('win-lose-visible');
+		});
+
+		$(document).unbind().keyup(function(e){
+			var key = e.which;
+			var keys = getKeys();
+			var colourId = keys.indexOf(key);
+
+			if(colourId != -1){
+
+				items = affectItems(items, itemAmount, colourId, size);
+				drawGrid(ctx, items, squareSize, colours);
+
+				tryCount--;
+				if(tryCount < 0){ tryCount = 0; }
+				$('.counter').html(tryCount + ' tries left!');
+
+				var win = checkWin(items);
+				var lose = (tryCount <= 0);
+				console.log('win: ', win, 'lose: ', lose);
+
+				if(win || lose){
+					$('.win-lose').addClass('win-lose-visible');				
+					$('.counter').html(tryCount + ' tries left!');				
+				}
+
+				// reset
+				$('.win-lose button').removeClass();
+				$('.win-lose p').html('');
+
+				if(win){
+					$('.win-lose h2').html('You win! :D');
+					$('.win-lose p').html('You even had '+tryCount+ ' tries left!');
+					$('.win-lose button').addClass('win-button').html('Continue (enter)');
+				}
+				else if(lose){
+					$('.win-lose h2').html('You lost... :(');
+					$('.win-lose button').addClass('lose-button').html('Try again (enter)');
+				}
+
+			}else if(key == 13){
+
+				if($('.win-lose button').hasClass('win-button')){
+					itemAmount += 1;
+					tryCount = Math.ceil(intialTryCount * 1.5);
+					game(false, itemAmount, tryCount);
+				}else if($('.win-lose button').hasClass('lose-button')){
+					game(false, itemAmount, intialTryCount);
+				}
+
+				$('.win-lose button').removeClass();
+				$('.win-lose').removeClass('win-lose-visible');
+
+			}
+		});
+
+	}else{
+		alert('Your browser doesn\'t support canvas. :(');
 	}
 }
 
@@ -147,6 +213,15 @@ function affectItems(items, itemAmount, colourId, size){
 	return items;
 }
 
+function getKeys(){
+	var keys = [];
+	$('.input-button').each(function(){
+		var letter = $(this).html().toUpperCase();
+		keys.push(letter.charCodeAt(0));
+	});		
+	return keys;
+}
+
 function genItems(context, itemAmount, colours){
 	var items = [];
 	var colourAmount = colours.length;
@@ -184,13 +259,13 @@ function drawGrid(context, items, squareSize, colours){
 
 		drawSquare(context, squareSize, x * squareSize, y * squareSize, colour);
 
-		// if(active){ drawPattern(context, squareSize, x * squareSize, y * squareSize); }
+		if(active){ drawPattern(context, squareSize, x * squareSize, y * squareSize); }
 	}
 }
 
 function drawPattern(context, size, originX, originY){
 	context.fillStyle = 'rgba(255,255,255,0.1)'
-	context.fillRect(originX + size / 4, size / 4, size / 2, size / 2);
+	context.fillRect(originX + size / 4, originY + size / 4, size / 2, size / 2);
 }
 
 function drawSquare(context, size, originX, originY, colour){
@@ -200,9 +275,9 @@ function drawSquare(context, size, originX, originY, colour){
 
 function genButtons(colours){
 	$('.buttons').html('');
-	var buttonChars = 'asdfghjkl';
+	var buttonChars = 'fije';
 	for(var i = 0; i < colours.length; i++){
-		$('<button style="background-color:'+colours[i]+';" value="'+i+'">'+buttonChars.charAt(i)+'</button>').appendTo('.buttons');
+		$('<button class="input-button" style="background-color:'+colours[i]+';" value="'+i+'">'+buttonChars.charAt(i)+'</button>').appendTo('.buttons');
 	}
 }
 

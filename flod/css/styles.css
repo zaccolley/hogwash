@@ -10,67 +10,63 @@
 
 *{ margin: 0; padding: 0; box-sizing: border-box; }
 
-body{ font-family: 'High Pixel', Helvetica, Arial, sans-serif; background: #F5F5F5; }
+button{ border: none; font-family: inherit; }
+button:hover{ cursor: pointer; }
+
+body{ font-family: 'Comfortaa', sans-serif; background: #F5F5F5; }
 
 main{
-	background: #BBB;
+	overflow: hidden;
+	position: relative;
 	display: block;
-	width: 40%;
+	width: 70%;
 	margin: 0 auto;
+	background: #BBB;
 }
 
-@media (max-width: 1200px){ main{ width: 60%; } }
-@media (max-width: 1000px){ main{ width: 70%; } }
-@media (max-width: 800px){ main{ width: 80%; } }
-@media (max-width: 600px){ main{ width: 100%; } }
+@media all and (max-width: 700px){ main{ width: 100%; } }
 
 h1{
 	background: rgba(0,0,0,0.1);
 	height: 70px;
-	color: #F8F8F8;
+	color: rgba(255,255,255,.6);
 	padding: 10px;
-	font: 1.5em;
-	font-weight: 900;
+	font-size: 2.5em;
+	font-weight: 100;
 	text-align: center;
-	text-transform: uppercase;
 }
 
-.controls{
-	overflow: hidden;
-	position: relative;
-}
+.controls{ overflow: hidden; }
 
-canvas, .buttons{
-	width: 100%;
+canvas, .controls{
+	float: left;
+	width: 50%;
 	background: #DDD;
 }
 
+@media all and (max-width: 700px){ canvas, .controls{ float: none; width: 100%; } }
+
 .buttons{ overflow: hidden; }
 
-
 .buttons button{
-	font-family: 'High Pixel', Helvetica, Arial, sans-serif;
+	float: left;
 	height: 100px;
 	font-size: 1.5em;
 	font-weight: 900;
 	color: rgba(0,0,0,.5);
-	float: left;
-	border: none;
+	box-shadow: inset 0 0 0 15px rgba(0,0,0,.025);
 }
-
-button:hover{ cursor: pointer; }
 
 .win-lose{
 	white-space: nowrap;
 	overflow: hidden;
-	padding: 5px 0;
+	padding: 80px 0;
 	opacity: 0;	
 	width: 100%;
 	position: absolute;
-	top: 0; left: 100%; bottom: 0;
+	top: 70px; left: 100%; bottom: 0;
 	text-align: center;
 	background: rgba(255,255,255,.75);
-	text-transform: uppercase;
 	transition: left .25s, opacity .25s;
 }
 
@@ -88,17 +84,15 @@ button:hover{ cursor: pointer; }
 }
 
 .win-lose button{
-	font-family: 'High Pixel', Helvetica, Arial, sans-serif;
-	background: #DDD;
-	border: none;
 	width: 100%;
-	height: 70px;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	font-size: 1em;
+	height: 170px;
 	padding: 10px 20px;
-	color: #5F5F5F;
+	color: rgb(95, 95, 95);
+	background: rgb(221, 221, 221);
+	font-size: 1.5em;
 }
 
 .win-lose button.win-button{ background: #B9DF9B; color: #627E4C; }
