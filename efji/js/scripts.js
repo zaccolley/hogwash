@@ -54,8 +54,8 @@ function game(intial, colourSeed, itemAmount, tryCount){
 		$('.counter').html(tryCount + ' tries left!');
 
 		$('button').unbind().on('click', function(){
-			var that = this; 
-			buttonHandler(that);
+			var colourId = $(this).val();
+			inputHandler(colourId);
 		});
 
 		$(document).unbind().keyup(function(e){
@@ -64,65 +64,14 @@ function game(intial, colourSeed, itemAmount, tryCount){
 			var colourId = keys.indexOf(key);
 
 			if(colourId != -1){
-
-				console.log($('.win-lose button').hasClass());
-				console.log(!$('.win-lose button').hasClass()); 
-
-				if(!$('.win-lose button').hasClass()){
-
-					items = affectItems(items, itemAmount, colourId, size);
-					drawGrid(ctx, items, squareSize, colours);
-
-					tryCount--;
-					if(tryCount < 0){ tryCount = 0; }
-					$('.counter').html(tryCount + ' tries left!');
-
-					var win = checkWin(items);
-					var lose = (tryCount <= 0);
-					console.log('win: ', win, 'lose: ', lose);
-
-					if(win || lose){
-						$('.win-lose').addClass('win-lose-visible');				
-						$('.counter').html(tryCount + ' tries left!');				
-					}
-
-					// reset
-					$('.win-lose button').removeClass();
-					$('.win-lose p').html('');
-
-					if(win){
-						$('.win-lose h2').html('You win! :D');
-						tryString = 'tries';
-						if(tryCount == 1){ tryString = 'try'; }						
-						$('.win-lose p').html('You had '+tryCount+' '+tryString+' left!');
-						$('.win-lose button').addClass('win-button').html('Continue <span>[space]</span>');
-					}
-					else if(lose){
-						$('.win-lose h2').html('You lost... :(');
-						$('.win-lose button').addClass('lose-button').html('Try again <span>[space]</span>');
-					}
-
-				}
-
+				inputHandler(colourId);
 			}else if(key == 13 || key == 32){
-
-				if($('.win-lose button').hasClass('win-button')){
-					itemAmount += 1;
-					tryCount = Math.ceil(intialTryCount * 1.5);
-					game(false, colourSeed, itemAmount, tryCount);
-				}else if($('.win-lose button').hasClass('lose-button')){
-					game(false, colourSeed, itemAmount, intialTryCount);
-				}
-
-				$('.win-lose button').removeClass();
-				$('.win-lose').removeClass('win-lose-visible');
-
+				winLoseHandler();
 			}
 		});
 
-		function buttonHandler(that){
-
-			var colourId = $(that).val();
+		function inputHandler(colourId){
+			
 			items = affectItems(items, itemAmount, colourId, size);
 			drawGrid(ctx, items, squareSize, colours);
 
@@ -157,9 +106,7 @@ function game(intial, colourSeed, itemAmount, tryCount){
 
 		}
 
-
-
-		$('.win-lose button').unbind().click(function(){
+		function winLoseHandler(){
 			if($('.win-lose button').hasClass('win-button')){
 				itemAmount += 1;
 				tryCount = Math.ceil(intialTryCount * 1.5);
@@ -170,8 +117,7 @@ function game(intial, colourSeed, itemAmount, tryCount){
 
 			$('.win-lose button').removeClass();
 			$('.win-lose').removeClass('win-lose-visible');
-		});
-
+		}
 
 	}else{
 		alert('Your browser doesn\'t support canvas. :(');
