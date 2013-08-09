@@ -78,7 +78,9 @@ function game(intial, colourSeed, itemAmount, tryCount){
 
 			if(win){
 				$('.win-lose h2').html('You win! :D');
-				$('.win-lose p').html('You even had '+tryCount+ ' tries left!');
+				tryString = 'tries';
+				if(tryCount > 1){ tryString = 'try'; }
+				$('.win-lose p').html('You had '+tryCount+' '+tryString+' left!');
 				$('.win-lose button').addClass('win-button').html('Continue <span>[space]</span>');
 			}
 			else if(lose){
@@ -135,7 +137,9 @@ function game(intial, colourSeed, itemAmount, tryCount){
 
 					if(win){
 						$('.win-lose h2').html('You win! :D');
-						$('.win-lose p').html('You even had '+tryCount+ ' tries left!');
+						tryString = 'tries';
+						if(tryCount == 1){ tryString = 'try'; }						
+						$('.win-lose p').html('You had '+tryCount+' '+tryString+' left!');
 						$('.win-lose button').addClass('win-button').html('Continue <span>[space]</span>');
 					}
 					else if(lose){

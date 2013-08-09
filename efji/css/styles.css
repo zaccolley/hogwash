@@ -20,7 +20,7 @@ main{
 	position: relative;
 	display: block;
 	width: 70%;
-	margin: 0 auto;
+	margin: 20px auto;
 	background: #BBB;
 }
 
@@ -98,6 +98,8 @@ canvas, .controls{
 
 .win-lose button.win-button{ background: #B9DF9B; color: #627E4C; }
 .win-lose button.lose-button{ background: #DF9B9B; color: #644848; }
+
+.win-lose button span{ opacity: .75; font-size: .75em; }
 
 .counter{
 	color: #F8F8F8;
