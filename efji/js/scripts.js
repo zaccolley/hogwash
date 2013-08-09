@@ -106,34 +106,41 @@ function game(intial, itemAmount, tryCount){
 
 			if(colourId != -1){
 
-				items = affectItems(items, itemAmount, colourId, size);
-				drawGrid(ctx, items, squareSize, colours);
+				console.log($('.win-lose button').hasClass());
+				console.log(!$('.win-lose button').hasClass()); 
 
-				tryCount--;
-				if(tryCount < 0){ tryCount = 0; }
-				$('.counter').html(tryCount + ' tries left!');
+				if(!$('.win-lose button').hasClass()){
 
-				var win = checkWin(items);
-				var lose = (tryCount <= 0);
-				console.log('win: ', win, 'lose: ', lose);
+					items = affectItems(items, itemAmount, colourId, size);
+					drawGrid(ctx, items, squareSize, colours);
 
-				if(win || lose){
-					$('.win-lose').addClass('win-lose-visible');				
-					$('.counter').html(tryCount + ' tries left!');				
-				}
+					tryCount--;
+					if(tryCount < 0){ tryCount = 0; }
+					$('.counter').html(tryCount + ' tries left!');
 
-				// reset
-				$('.win-lose button').removeClass();
-				$('.win-lose p').html('');
+					var win = checkWin(items);
+					var lose = (tryCount <= 0);
+					console.log('win: ', win, 'lose: ', lose);
 
-				if(win){
-					$('.win-lose h2').html('You win! :D');
-					$('.win-lose p').html('You even had '+tryCount+ ' tries left!');
-					$('.win-lose button').addClass('win-button').html('Continue (enter)');
-				}
-				else if(lose){
-					$('.win-lose h2').html('You lost... :(');
-					$('.win-lose button').addClass('lose-button').html('Try again (enter)');
+					if(win || lose){
+						$('.win-lose').addClass('win-lose-visible');				
+						$('.counter').html(tryCount + ' tries left!');				
+					}
+
+					// reset
+					$('.win-lose button').removeClass();
+					$('.win-lose p').html('');
+
+					if(win){
+						$('.win-lose h2').html('You win! :D');
+						$('.win-lose p').html('You even had '+tryCount+ ' tries left!');
+						$('.win-lose button').addClass('win-button').html('Continue (enter)');
+					}
+					else if(lose){
+						$('.win-lose h2').html('You lost... :(');
+						$('.win-lose button').addClass('lose-button').html('Try again (enter)');
+					}
+
 				}
 
 			}else if(key == 13){
@@ -275,7 +282,7 @@ function drawSquare(context, size, originX, originY, colour){
 
 function genButtons(colours){
 	$('.buttons').html('');
-	var buttonChars = 'fije';
+	var buttonChars = 'efji';
 	for(var i = 0; i < colours.length; i++){
 		$('<button class="input-button" style="background-color:'+colours[i]+';" value="'+i+'">'+buttonChars.charAt(i)+'</button>').appendTo('.buttons');
 	}

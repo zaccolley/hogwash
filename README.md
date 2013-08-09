@@ -2,7 +2,7 @@
 
 random bits and bobs
 
-### [fije](http://www.zaccolley.com/fije)
+### [efji](http://www.zaccolley.com/efji)
 
 i wanted to make an improved version [of a flash game I played](http://www.flashbynight.com/drench/). this was also an experiment with using canvas.
 
