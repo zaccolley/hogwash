@@ -260,7 +260,7 @@ function genButtons(colours){
 	var startPos = Math.floor((buttonChars.length - colours.length) / 2);
 	var colourCount = 0;
 	for(var i = startPos; i < startPos + colours.length; i++){
-		$('<button class="input-button" style="background-color:'+colours[colourCount]+';" value="'+i+'">'+buttonChars.charAt(i)+'</button>').appendTo('.buttons');
+		$('<button class="input-button" style="background-color:'+colours[colourCount]+';" value="'+(i-1)+'">'+buttonChars.charAt(i)+'</button>').appendTo('.buttons');
 		colourCount++;
 	}
 }
