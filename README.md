@@ -10,6 +10,10 @@ i wanted to make an improved version [of a flash game I played](http://www.flash
 
 birthday present to my friend, with help from [my brother](http://www.github.com/nickcolley "Nick Colley")!
 
+### [minecraftexplore](http://minecraftexplore.tumblr.com)
+
+files for the old minecraft blooog
+
 it features a CSS Gameboy Advance SP!
 **only works in Chrome currently**
 
@@ -20,7 +24,3 @@ this is slide on my talk for meeting 7.5 for [uopcs](http://www.uopcs.com/ "Univ
 ### [unipcs](http://www.zaccolley.com/stuff/unipcs)
 
 having fun with some data on the uni's pc availability
-
-## [minecraftexplore](http://minecraftexplore.tumblr.com)
-
-files for the old minecraft blooog
