@@ -86,7 +86,6 @@
 {block:Posts}
  
 		<div class="post">
-            {block:Date}<div class="date" title="That was {TimeAgo}!">{ShortMonth} {DayOfMonth}</div>{/block:Date}
             <div class="postwrap">
 
 		{block:Text}
@@ -156,6 +155,8 @@
 		{/block:Answer}
 
        		</div>
+
+       		{block:Date}<div class="date" title="That was {TimeAgo}!">{ShortMonth} {DayOfMonth}</div>{/block:Date}
 
 			<div class="postnotes">		
 				{block:IndexPage}<a href="{Permalink}">Notes <p>{block:NoteCount}({NoteCount}){/block:NoteCount}</p></a>{/block:IndexPage}
