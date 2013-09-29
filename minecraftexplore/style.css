@@ -45,7 +45,7 @@ iframe{ display: block; width: 100%; }
 
 body {
 	color: #fff;
-	background: #593d29 url('http://www.zaccolley.com/minecraftexplore/hurl.png');
+	background: #593d29 url('http://www.zaccolley.com/minecraftexplore/bg/hurl.png');
 	font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -59,12 +59,12 @@ a:hover {
 }
 
 #heading {
-	background: #000012 url('http://www.zaccolley.com/minecraftexplore/moon.png') top right no-repeat;
+	background: #000012 url('http://www.zaccolley.com/minecraftexplore/bg/moon.png') top right no-repeat;
 	padding-bottom: 25px;
 }
 
 .header {
-	background: url('http://www.zaccolley.com/minecraftexplore/headerhurl.png') repeat-y center;
+	background: url('http://www.zaccolley.com/minecraftexplore/bg/headerhurl.png') repeat-y center;
 	padding: 25px 0 35px 0;
 	width: 950px;
 	margin: 0 auto;
@@ -99,7 +99,7 @@ a:hover {
 }
 
 #grass {
-	background: url('http://www.zaccolley.com/minecraftexplore/grass.png') repeat-x;
+	background: url('http://www.zaccolley.com/minecraftexplore/bg/grass.png') repeat-x;
 	height: 42px;
 }
 
@@ -166,6 +166,12 @@ a:hover {
 	background-color: rgba(0,0,0,.1);
 }
 
+#searchfail{
+	display: block;
+	width: 50%;
+	margin: 25px auto;
+}
+
 #content {
 	padding-right: 5%;
 	min-height: 500px;
@@ -211,7 +217,7 @@ a:hover {
 
 
 .post {
-	background: #593d29 url('http://www.zaccolley.com/minecraftexplore/darkstone.png');
+	background: #593d29 url('http://www.zaccolley.com/minecraftexplore/bg/darkstone.png');
 	text-align: center;
 	margin: 0 auto 25px;
 }
@@ -309,7 +315,7 @@ a:hover {
 }
 
 #music {
-	background: url('http://www.zaccolley.com/minecraftexplore/darkstone.png');
+	background: url('http://www.zaccolley.com/minecraftexplore/bg/darkstone.png');
 }
 
 .audioimg {
@@ -383,13 +389,25 @@ a:hover {
 	color: rgba(0,0,0,.6);
 }
 
-.postnotes img {
-	margin-top: -3px;
+.postnotes .post-icon {
+	text-indent: -5000px;
+	padding: 10px 20px 0;
+	background: no-repeat center center;
+	float: right;
+	width: 10%;
 	opacity: .85;
 	filter: alpha(opacity=85);
-	float: right;
 	cursor: help;
 }
+
+.postnotes .book-icon{ background-image: url('http://www.zaccolley.com/minecraftexplore/post-icons/book.png'); }
+.postnotes .painting-icon{ background-image: url('http://www.zaccolley.com/minecraftexplore/post-icons/painting.png'); }
+.postnotes .sign-icon{ background-image: url('http://www.zaccolley.com/minecraftexplore/post-icons/sign.png'); }
+.postnotes .string-icon{ background-image: url('http://www.zaccolley.com/minecraftexplore/post-icons/string.png'); }
+.postnotes .rose-icon{ background-image: url('http://www.zaccolley.com/minecraftexplore/post-icons/rose.png'); }
+.postnotes .disc-icon{ background-image: url('http://www.zaccolley.com/minecraftexplore/post-icons/disc.png'); }
+.postnotes .redstone-icon{ background-image: url('http://www.zaccolley.com/minecraftexplore/post-icons/redstone.png'); }
+.postnotes .apple-icon{ background-image: url('http://www.zaccolley.com/minecraftexplore/post-icons/apple.png'); }
 
 .notes {
 	padding: 10px;
@@ -458,13 +476,6 @@ a#follow:hover {
 	box-shadow: inset 0 1px 0 0 rgba(0,0,0,.1), 0 1px 0 0 rgba(255,255,255,.1);
 }
 
-.fb-like {
-	background-color: rgba(0,0,0,.1);
-	border: 1px solid rgba(255,255,255,.1);
-	margin-top: 30px;
-	padding: 10px;
-}
-
 #texturepack, #pages {
 	list-style: none;
 	margin-top: 30px;
@@ -519,7 +530,7 @@ a#follow:hover {
 .footer {
 	clear: both;
 	border-bottom: 0;
-	background-image: url('http://www.zaccolley.com/minecraftexplore/darkstone.png');
+	background-image: url('http://www.zaccolley.com/minecraftexplore/bg/darkstone.png');
 	padding: 25px;
 	width: 100%;
 }
@@ -556,22 +567,6 @@ a#follow:hover {
 .footer li a:hover {
 	border: 0;
 	text-shadow: #000 0 0 25px;
-}
-
-.footer li input#cake {
-	border: 0;
-	color: #fff;
-	padding-right: 35px;
-	background: url('http://www.zaccolley.com/minecraftexplore/cake.png') no-repeat center right;
-	font-size: 25px;
-	text-shadow: -1px -1px 0 rgba(0,0,0,.5);
-	font-family: LearningCurveRegular, Georgia, serif;
-}
-
-.footer li input#cake:hover {
-	cursor: pointer;
-	opacity: .6;
-	filter: alpha(opacity=60);
 }
 
 #tumblrpower {

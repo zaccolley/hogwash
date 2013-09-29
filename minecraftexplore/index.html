@@ -71,12 +71,12 @@
 	<div id="content">
 
 {block:SearchPage}
-	{block:NoSearchResults}
-		<img src="http://static.tumblr.com/6k7dgkc/8iClrqour/animals.png" style="margin:0 200px 10px 200px;" />
-	{/block:NoSearchResults}
-	
 	<p id="searchtext"> You searched for "<i><a href="{URLSafeSearchQuery}">{SearchQuery}</a></i>". {SearchResultCount} post(s) seem to match. {block:NoSearchResults}What a shame. :( Try a different search?
 	{/block:NoSearchResults}</p>
+
+	{block:NoSearchResults}
+		<img id="searchfail" src="http://www.zaccolley.com/minecraftexplore/searchfail.png" />
+	{/block:NoSearchResults}
 {/block:SearchPage}
     
 {block:TagPage}
@@ -156,19 +156,19 @@
 
        		</div>
 
-       		{block:Date}<div class="date" title="That was {TimeAgo}!">{ShortMonth} {DayOfMonth}</div>{/block:Date}
-
 			<div class="postnotes">		
+       			{block:Date}<div class="date" title="That was {TimeAgo}!">{ShortMonth} {DayOfMonth}</div>{/block:Date}
+
 				{block:IndexPage}<a href="{Permalink}">Notes <p>{block:NoteCount}({NoteCount}){/block:NoteCount}</p></a>{/block:IndexPage}
-				{block:Text}<img src="http://static.tumblr.com/6k7dgkc/KQUlpqb4i/book.png" title="Text" />{/block:Text}
-				{block:Photo}<img src="http://static.tumblr.com/6k7dgkc/Rqblpqbe8/painting.png" title="Photo"/>{/block:Photo}
-				{block:Photoset}<img src="http://static.tumblr.com/6k7dgkc/Rqblpqbe8/painting.png" title="Photoset"/>{/block:Photoset}
-				{block:Quote}<img src="http://static.tumblr.com/6k7dgkc/u4Flpqbew/sign.png" title="Quote" />{/block:Quote}
-				{block:Link}<img src="http://static.tumblr.com/6k7dgkc/X1Qlpqbfd/string.png" title="Link" />{/block:Link}
-				{block:Chat}<img src="http://static.tumblr.com/6k7dgkc/waYlpqbfv/rose.png" title="Chat" />{/block:Chat}
-				{block:Audio}<img src="http://static.tumblr.com/6k7dgkc/Wfulpqbgm/disc.png" title="Audio" />{/block:Audio}
-				{block:Video}<img src="http://static.tumblr.com/6k7dgkc/GMxlpqbhi/redstone.png" title="Video"/>{/block:Video}
-				{block:Answer}<img src="http://static.tumblr.com/6k7dgkc/wNTlpqb3l/apple.png" title="Answer" />{/block:Answer}
+				{block:Text}<span class="post-icon book-icon" title="Text">Text</span>{/block:Text}
+				{block:Photo}<span class="post-icon painting-icon" title="Photo">Photo</span>{/block:Photo}
+				{block:Photoset}<span class="post-icon painting-icon" title="Photoset">Photoset</span>{/block:Photoset}
+				{block:Quote}<span class="post-icon sign-icon" title="Quote">Quote</span>{/block:Quote}
+				{block:Link}<span class="post-icon string-icon" title="Link">Link</span>{/block:Link}
+				{block:Chat}<span class="post-icon rose-icon" title="Chat">Chat</span>{/block:Chat}
+				{block:Audio}<span class="post-icon disc-icon" title="Audio">Audio</span>{/block:Audio}
+				{block:Video}<span class="post-icon redstone-icon" title="Video">Video</span>{/block:Video}
+				{block:Answer}<span class="post-icon apple-icon" title="Answer">Answer</span>{/block:Answer}
 			</div>
 
 		{block:PostNotes}
@@ -211,7 +211,7 @@
 			{/block:SubmissionsEnabled}
 	        <li><a href="/archive">Archive</a></li>
 	                      
-	        <li id="tumblrpower">Powered by <a href="http://www.tumblr.com"><img src="http://assets.tumblr.com/images/logo.png" alt="Tumblr" /></a></li>
+	        <li id="tumblrpower">Powered by <a href="http://www.tumblr.com"><img src="http://www.zaccolley.com/minecraftexplore/tumblrlogo.png" alt="Tumblr" /></a></li>
 		</ul>
 
 	</div>
