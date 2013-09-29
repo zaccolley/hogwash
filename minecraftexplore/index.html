@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="We blog about Minecraft. Come explore it with us!" />
+
+
+<link rel="stylesheet" type="text/css" href="http://www.zaccolley.com/minecraftexplore/style.css"/>
+<script type="text/javascript" src="http://www.zaccolley.com/minecraftexplore/scripts.js"></script>
+
+<link rel="shortcut icon" href="{Favicon}"/>
+
+<title>{Title}</title>
+
+</head>
+
+<body onload="phraseChange()">
+
+<div id="heading">
+        
+	<div class="header">
+			
+		<h1><a href="/">{Title}</a></h1>
+        
+        <p id="yellowtextthing">&nbsp;</p>
+        
+	</div>
+
+		<ul class="nav">
+            <li><a href="/" >Home</a></li>
+        {block:AskEnabled}
+			<li><a href="/ask">Ask</a></li>
+		{/block:AskEnabled}
+		{block:SubmissionsEnabled}
+			<li><a href="/submit">Submit</a></li>
+		{/block:SubmissionsEnabled}
+            <li><a href="/archive">Archive</a></li>
+            <li><form action="/search" method="get"><input type="text" id="searchbox" name="q" value="{SearchQuery}"/><input type="submit" id="searchbutton" value="Search"/></form></li>  
+		</ul>
+
+</div>
+	
+<div id="grass"></div>	
+
+<div class="main">
+
+	<div id="sidebar">
+
+		<div id="desc">{Description}</div>
+
+		<a href="http://www.tumblr.com/register/follow/minecraftexplore" id="follow">+ Follow us!</a>
+
+		<ul id="texturepack">
+			<li>Texture packs we use:</li>
+			<li><a href="http://minecraftexplore.tumblr.com/tagged/default" class="D">Default</a></li>
+			<li><a href="http://minecraftexplore.tumblr.com/tagged/johnsmith" class="J">John Smith</a></li>
+			<li><a href="http://minecraftexplore.tumblr.com/tagged/LBPhotoRealism" class="LB">LB Photo Realism</a></li>
+		</ul>
+
+	{block:HasPages}
+		<ul id="pages">
+			<li>Things we've made:</li>
+			{block:Pages}
+			<li><a href="{URL}">{Label}</a></li> {/block:Pages}                 
+        </ul>
+	{/block:HasPages}
+
+	</div>
+
+	<div id="content">
+
+{block:SearchPage}
+	{block:NoSearchResults}
+		<img src="http://static.tumblr.com/6k7dgkc/8iClrqour/animals.png" style="margin:0 200px 10px 200px;" />
+	{/block:NoSearchResults}
+	
+	<p id="searchtext"> You searched for "<i><a href="{URLSafeSearchQuery}">{SearchQuery}</a></i>". {SearchResultCount} post(s) seem to match. {block:NoSearchResults}What a shame. :( Try a different search?
+	{/block:NoSearchResults}</p>
+{/block:SearchPage}
+    
+{block:TagPage}
+    <p id="tagtext">All these posts are tagged by "<a href="{URLSafeTag}">{Tag}</a>".</p>
+{/block:TagPage}
+
+{block:Posts}
+ 
+		<div class="post">
+            {block:Date}<div class="date" title="That was {TimeAgo}!">{ShortMonth} {DayOfMonth}</div>{/block:Date}
+            <div class="postwrap">
+
+		{block:Text}
+			<div id="text">
+			{block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+			{Body}
+			</div>
+		{/block:Text}
+
+		{block:Photo}						
+			{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+            {block:Caption}<div class="photocaption">{Caption}</div>{/block:Caption}	
+		{/block:Photo}
+
+		{block:Photoset}
+			{Photoset-700}			
+			{block:Caption}<div class="photocaption">{Caption}</div>{/block:Caption}
+		{/block:Photoset}
+
+		{block:Quote}
+            <span id="quote"><p>{Quote}</p></span>
+		{/block:Quote}
+
+
+		{block:Link}
+			<div id="text">
+			<h1><a href="{Permalink}">{Name}</a></h1>
+			{block:Description}{Description}{/block:Description}
+			</div>
+		{/block:Link}
+
+		{block:Chat}
+
+			<div id="chat">
+			{block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+			{block:Lines}
+				<p class="{Alt}">
+				{block:Label}
+				<span>{Label}</span>
+				{/block:Label}
+				{Line}
+				</p>
+				{/block:Lines}
+			</div>
+		{/block:Chat}
+
+		{block:Audio}
+	        <div id="music">
+				<div id="audioplayer">{AudioPlayerWhite}</div>
+				{block:AlbumArt}<img class="audioimg" src="{AlbumArtURL}"/>{/block:AlbumArt}
+				<p>{block:Artist}<b>{Artist}</b> | {/block:Artist}
+				{block:TrackName}{TrackName} | {/block:TrackName}
+				{block:Album}<i>{Album}</i>{/block:Album}</p>
+			</div>
+		{/block:Audio}
+
+		{block:Video}
+			{Video-700}		
+			{block:Caption}<div class="photocaption">{Caption}</div>{/block:Caption}
+		{/block:Video}
+
+		{block:Answer}
+			<div id="answer">
+			<div>{Asker} asks: {Question}</div>
+			<div>{Answer}</div>
+			</div>
+		{/block:Answer}
+
+       		</div>
+
+			<div class="postnotes">		
+				{block:IndexPage}<a href="{Permalink}">Notes <p>{block:NoteCount}({NoteCount}){/block:NoteCount}</p></a>{/block:IndexPage}
+				{block:Text}<img src="http://static.tumblr.com/6k7dgkc/KQUlpqb4i/book.png" title="Text" />{/block:Text}
+				{block:Photo}<img src="http://static.tumblr.com/6k7dgkc/Rqblpqbe8/painting.png" title="Photo"/>{/block:Photo}
+				{block:Photoset}<img src="http://static.tumblr.com/6k7dgkc/Rqblpqbe8/painting.png" title="Photoset"/>{/block:Photoset}
+				{block:Quote}<img src="http://static.tumblr.com/6k7dgkc/u4Flpqbew/sign.png" title="Quote" />{/block:Quote}
+				{block:Link}<img src="http://static.tumblr.com/6k7dgkc/X1Qlpqbfd/string.png" title="Link" />{/block:Link}
+				{block:Chat}<img src="http://static.tumblr.com/6k7dgkc/waYlpqbfv/rose.png" title="Chat" />{/block:Chat}
+				{block:Audio}<img src="http://static.tumblr.com/6k7dgkc/Wfulpqbgm/disc.png" title="Audio" />{/block:Audio}
+				{block:Video}<img src="http://static.tumblr.com/6k7dgkc/GMxlpqbhi/redstone.png" title="Video"/>{/block:Video}
+				{block:Answer}<img src="http://static.tumblr.com/6k7dgkc/wNTlpqb3l/apple.png" title="Answer" />{/block:Answer}
+			</div>
+
+		{block:PostNotes}
+			{PostNotes}
+		{/block:PostNotes}	
+
+		</div>
+
+{/block:Posts}
+
+{block:Pagination}
+	<div id="pagination">
+	    {block:PreviousPage}
+	    <a href="{PreviousPage}">Previous</a>
+	    {/block:PreviousPage}
+	    {block:JumpPagination length="10"}
+	    {block:CurrentPage}
+	    <span class="current_page">{PageNumber}</span>
+	    {/block:CurrentPage}
+	    {block:JumpPage}
+	    <a class="jump_page" href="{URL}">{PageNumber}</a>
+	    {/block:JumpPage}
+	    {/block:JumpPagination}
+	    {block:NextPage}
+	     <a href="{NextPage}">Next</a>
+	    {/block:NextPage}
+	</div>
+{/block:Pagination}
+
+	<div class="footer">
+	    
+	    <h2>{Title}</h2>
+		<ul>
+	        <li><a href="/" >Home</a></li>
+	        {block:AskEnabled}
+			<li><a href="/ask">Ask</a></li>
+			{/block:AskEnabled}
+			{block:SubmissionsEnabled}
+			<li><a href="/submit">Submit</a></li>
+			{/block:SubmissionsEnabled}
+	        <li><a href="/archive">Archive</a></li>
+	                      
+	        <li id="tumblrpower">Powered by <a href="http://www.tumblr.com"><img src="http://assets.tumblr.com/images/logo.png" alt="Tumblr" /></a></li>
+		</ul>
+
+	</div>
+
+</div>	
+
+</body>
+</html>

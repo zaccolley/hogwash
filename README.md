@@ -20,3 +20,7 @@ this is slide on my talk for meeting 7.5 for [uopcs](http://www.uopcs.com/ "Univ
 ### [unipcs](http://www.zaccolley.com/stuff/unipcs)
 
 having fun with some data on the uni's pc availability
+
+## [minecraftexplore](http://minecraftexplore.tumblr.com)
+
+files for the old minecraft blooog
