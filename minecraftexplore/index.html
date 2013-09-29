@@ -7,7 +7,6 @@
 
 
 <link rel="stylesheet" type="text/css" href="http://www.zaccolley.com/minecraftexplore/style.css"/>
-<script type="text/javascript" src="http://www.zaccolley.com/minecraftexplore/scripts.js"></script>
 
 <link rel="shortcut icon" href="{Favicon}"/>
 
@@ -15,7 +14,7 @@
 
 </head>
 
-<body onload="phraseChange()">
+<body onload="phraseChange();">
 
 <div id="heading">
         
@@ -36,7 +35,7 @@
 			<li><a href="/submit">Submit</a></li>
 		{/block:SubmissionsEnabled}
             <li><a href="/archive">Archive</a></li>
-            <li><form action="/search" method="get"><input type="text" id="searchbox" name="q" value="{SearchQuery}"/><input type="submit" id="searchbutton" value="Search"/></form></li>  
+            <li id="search"><form action="/search" method="get"><input type="text" id="searchbox" name="q" value="{SearchQuery}"/><input type="submit" id="searchbutton" value="Search"/></form></li>  
 		</ul>
 
 </div>
@@ -198,25 +197,27 @@
 	</div>
 {/block:Pagination}
 
-	<div class="footer">
+<div class="footer">
 	    
-	    <h2>{Title}</h2>
-		<ul>
-	        <li><a href="/" >Home</a></li>
-	        {block:AskEnabled}
-			<li><a href="/ask">Ask</a></li>
-			{/block:AskEnabled}
-			{block:SubmissionsEnabled}
-			<li><a href="/submit">Submit</a></li>
-			{/block:SubmissionsEnabled}
-	        <li><a href="/archive">Archive</a></li>
-	                      
-	        <li id="tumblrpower">Powered by <a href="http://www.tumblr.com"><img src="http://www.zaccolley.com/minecraftexplore/tumblrlogo.png" alt="Tumblr" /></a></li>
-		</ul>
+    <h2>{Title}</h2>
+	<ul>
+        <li><a href="/" >Home</a></li>
+        {block:AskEnabled}
+		<li><a href="/ask">Ask</a></li>
+		{/block:AskEnabled}
+		{block:SubmissionsEnabled}
+		<li><a href="/submit">Submit</a></li>
+		{/block:SubmissionsEnabled}
+        <li><a href="/archive">Archive</a></li>
+                      
+        <li id="tumblrpower">Powered by <a href="http://www.tumblr.com"><img src="http://www.zaccolley.com/minecraftexplore/tumblrlogo.png" alt="Tumblr" /></a></li>
+	</ul>
 
-	</div>
+</div>
 
-</div>	
+</div>
+
+<script src="http://www.zaccolley.com/minecraftexplore/js/scripts.js"></script>
 
 </body>
 </html>
