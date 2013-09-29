@@ -44,6 +44,7 @@ iframe{ display: block; width: 100%; }
 }
 
 body {
+	overflow-x: hidden; /* dirty i know */
 	color: #fff;
 	background: #593d29 url('http://www.zaccolley.com/minecraftexplore/bg/hurl.png');
 	font-family: Helvetica, Arial, sans-serif;
@@ -85,8 +86,8 @@ a:hover {
 
 #yellowtextthing {
 	position: absolute;
-	bottom: 15%;
-	right: 5%;
+	bottom: 25%;
+	right: 10%;
 	color: #FF0;
 	font-size: 17px;
 	font-family: Minecraft, Arial, sans-serif;
@@ -181,6 +182,7 @@ a:hover {
 }
 
 #content {
+	padding-bottom: 20px;
 	padding-right: 5%;
 	min-height: 500px;
 	width: 75%;
@@ -200,7 +202,7 @@ a:hover {
 }
 
 #pagination {
-	padding: 20px;
+	padding: 5px;
 	font-size: 20px;
 	font-family: Minecraft, sans-serif;
 	text-align: center;
@@ -208,6 +210,8 @@ a:hover {
 	color: rgba(255, 255, 255, 0.9);
 	cursor: default;
 }
+
+#pagination span, #pagination a{ padding: 0 .25em; }
 
 #pagination a.jump_page {
 	color: rgba(255, 255, 255, 0.2);
@@ -507,7 +511,7 @@ a#follow:hover {
 	margin-bottom: 5px;
 	padding: 10px 15px;
 	background: no-repeat center;
-	background-image: url('http://www.planetminecraft.com/files/resource_media/screenshot/1122/js04_67480.jpg') no-repeat center left;
+	background-size: cover;
 	font-size: 25px;
 	box-shadow: rgba(255,255,255,.1) 0 1px 0 0 inset, rgba(0,0,0,.1) 0 1px 0 1px;
 }
@@ -517,19 +521,9 @@ a#follow:hover {
 	filter: alpha(opacity=80);
 }
 
-
-
-#texturepack .D {
-	background-image: url('http://28.media.tumblr.com/tumblr_lruenfFMA81qhyfmbo1_500.png');
-}
-
-#texturepack .J {
-	background-image: url('http://www.planetminecraft.com/files/resource_media/screenshot/1122/js04_67480.jpg');
-}
-
-#texturepack .LB {
-	background-image: url('http://30.media.tumblr.com/tumblr_lvp4wbfhrT1qhyfmbo1_500.png');
-}
+#texturepack .D { background-image: url('http://www.zaccolley.com/minecraftexplore/bg/D.png'); }
+#texturepack .J { background-image: url('http://www.zaccolley.com/minecraftexplore/bg/J.png'); }
+#texturepack .LB { background-image: url('http://www.zaccolley.com/minecraftexplore/bg/LB.png'); }
 
 #pages li, #texturepack li {
 	margin-bottom: 10px;
@@ -601,15 +595,21 @@ a#follow:hover {
 	filter: alpha(opacity=70);
 }
 
-@media all and (max-width: 700px){
+@media all and (max-width: 900px){
+	.footer li { font-size: 12px; }
+}
 
-	#texturepack, #pages, #search{ display: none; }
+@media all and (max-width: 750px){
+
+	#texturepack, #pages, #search, .footer li { display: none; }
 	.header, .nav, .main, #content, #sidebar{ width: 100%; }
-	#content{ padding: 0 10px; }
+	#content{ padding: 0 10px 15px; }
 	#sidebar{ padding: 10px; }
 
 	.header{ padding: 25px 0 5px 0; }
 	.header h1 a { font-size: 1.5em; }
+
+	#yellowtextthing { font-size: 10px; }
 
 	.nav li{ font-size: 24px; }
 
@@ -617,5 +617,7 @@ a#follow:hover {
 	#sidebar #desc span { width: 5em; }
 
 	a#follow { margin: 0; }
+
+	.footer #tumblrpower{ display: inline-block; }
 
 }
