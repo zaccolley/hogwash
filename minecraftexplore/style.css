@@ -618,6 +618,9 @@ a#follow:hover {
 
 	a#follow { margin: 0; }
 
+	.postnotes a { width: 65%; }
+	.postnotes .post-icon {	width: 15%; }
+
 	.footer #tumblrpower{ display: inline-block; }
 
 }
