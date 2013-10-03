@@ -94,7 +94,9 @@ $.get('data.php', function(data){
 		}
 
 		console.log('Current geo: ', geoLat, geoLon);
-		console.log('Distance: ', build.distance);	
+		console.log('Distance: ', build.distance);
+
+		$('#'+id).find('h1').append('<span>' + build.distance.toString().substring(0, 4) + 'km');		
 	}
 
 	var smallestD = buildings[0];
@@ -106,7 +108,7 @@ $.get('data.php', function(data){
 
 	console.log(smallestD);
 
-	$('#'+smallestD.name.substring(0, 3)).find('h1').append('<span>(Closest)</span>');
+	$('#'+smallestD.name.substring(0, 3)).find('h1 span').append(' (Closest)');
 });
 
 navigator.geolocation.getCurrentPosition(geoData, geoError);
