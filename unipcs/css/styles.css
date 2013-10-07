@@ -19,17 +19,18 @@ section{
 	border-bottom: 2px solid #DDD;
 }
 
-section h1{
-	font-size: 3em;
-}
+section:last-child{ border: none; }
+
+section h1{	font-size: 3em; }
 
 section .bar{
+	overflow: hidden;
 	height: 10px;
 	background: #DFDFDF;
 	
-	-webkit-border-radius: 2px;
-	   -moz-border-radius: 2px;
-			border-radius: 2px;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+			border-radius: 5px;
 }
 
 section .percent{
@@ -37,6 +38,11 @@ section .percent{
 	background: #313131;
 	width: 0%;
 }
+
+#lib .percent{ -webkit-transition: width .25s 0s; transition: width .25s .0s; }
+#par .percent{ -webkit-transition: width .25s .25s; transition: width .25s .25s; }
+#por .percent{ -webkit-transition: width .25s .75s; transition: width .25s .75s; }
+#ang .percent{ -webkit-transition: width .25s 1s; transition: width .25s 1s; }
 
 section p{
 	color: #535353;
@@ -49,4 +55,20 @@ section span{
 	font-weight: 200;
 	font-size: .5em;
 	color: #8F8F8F;
+}
+
+@media all and (max-width: 700px){
+
+	section h1{ font-size: 2em; }
+
+	section p{
+		padding-top: .25em;
+		font-size: 1em;
+	}
+
+	section p span{
+		margin: 0;
+		font-size: .9em;
+	}
+	
 }

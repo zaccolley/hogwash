@@ -1,20 +1,26 @@
 (function(){
-	var buildings = [];
-		
-	var geoLat = '';
-	var geoLon = '';
+
+	var geoOptions = {
+		enableHighAccuracy: true,
+		maximumAge: 0
+	};
 
 	// get the geolocation
-	navigator.geolocation.getCurrentPosition(geoData, geoError);
+	navigator.geolocation.getCurrentPosition(geoData, geoError, geoOptions);
 
-	// start main and run it every minute
-	main();
-	setInterval(main, 60000);
 })()
 
-function main(){
+function startUp(geoLat, geoLon){
+	// start main and run it every minute
+	main(geoLat, geoLon);
+	setInterval(main(geoLat, geoLon), 60000);
+}
+
+function main(geoLat, geoLon){
 	console.clear();
 	console.log('Update');
+
+	var buildings = [];
 
 	$.get('data.php', function(data){
 		// format the data and stick it in an array
@@ -92,7 +98,7 @@ function main(){
 			if(build.avail){ // if the building is open
 				var output = build.pcs.free +' / '+ build.pcs.total + ' available <span>('+percentPretty+')</span>';
 
-				var colourHue = percent * 0.8; // colours here for the bar
+				var colourHue = percent; // colours here for the bar
 				// using hsl so we can keep the tone the same and just change the hue
 				var colour = 'hsl('+colourHue+', 60%, 60%)';
 
@@ -105,12 +111,12 @@ function main(){
 			$('#'+id).find('p').html(output);
 
 			// if the gelocation is set
-			if(geoLat && geoLon){
+			if(geoLat != '' && geoLon != ''){
 				geo(id, build)
 			}
 		}
 
-		if(geoLat && geoLon){
+		if(geoLat != '' && geoLon != ''){
 
 			// working out which building has the smallest distance
 
@@ -134,9 +140,18 @@ function main(){
 function geoData(pos){
 	geoLat = pos.coords.latitude;
 	geoLon = pos.coords.longitude;
+
+	startUp(geoLat, geoLon);
 }
 
-function geoError(){ console.log('No geolocation. :(');	}
+function geoError(err){
+	console.log(err.code, 'ERROR:', err.message);
+	
+	geoLat = '';
+	geoLon = '';
+
+	startUp(geoLat, geoLon);
+}
 
 function geo(id, build){
 
