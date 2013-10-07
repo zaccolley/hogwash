@@ -15,12 +15,11 @@ section{
 	overflow: hidden;
 	padding: 10px 20px;
 	height: 25vh;
-	min-height: 160px;
 	text-transform: uppercase;
 	border-bottom: 2px solid #DDD;
 }
 
-section:last-child{ border: none; }
+section:last-child{ border-bottom: 0; }
 
 section h1{	font-size: 3em; }
 

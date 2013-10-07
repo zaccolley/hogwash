@@ -99,7 +99,7 @@ function main(geoLat, geoLon){
 			var percentPretty = Math.floor(percent)+'%'; // tidy the percentage and add a '%'
 
 			if(build.avail){ // if the building is open
-				var output = build.pcs.free +' / '+ build.pcs.total + ' available <span>('+percentPretty+')</span>';
+				var output = build.pcs.free +' / '+ build.pcs.total + ' available <span>'+percentPretty+'</span>';
 
 				var colourHue = percent; // colours here for the bar
 				// using hsl so we can keep the tone the same and just change the hue
