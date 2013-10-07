@@ -1,5 +1,8 @@
 (function(){
 
+	// initalise with no geolocation
+	main('', '');
+
 	var geoOptions = {
 		enableHighAccuracy: true,
 		maximumAge: 0
@@ -17,7 +20,7 @@ function startUp(geoLat, geoLon){
 }
 
 function main(geoLat, geoLon){
-	console.clear();
+	console.log('------');
 	console.log('Update');
 
 	var buildings = [];
