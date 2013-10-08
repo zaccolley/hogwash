@@ -10,12 +10,12 @@ i wanted to make an improved version [of a flash game I played](http://www.flash
 
 birthday present to my friend, with help from [my brother](http://www.github.com/nickcolley "Nick Colley")!
 
+it features a CSS Gameboy Advance SP!
+**only works in Chrome currently**
+
 ### [minecraftexplore](http://minecraftexplore.tumblr.com)
 
 files for the old minecraft blooog
-
-it features a CSS Gameboy Advance SP!
-**only works in Chrome currently**
 
 ### [uopcstalk](http://www.zaccolley.com/stuff/sexycsstalk "SEXY CSS TALK")
 
