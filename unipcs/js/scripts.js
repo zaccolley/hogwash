@@ -20,22 +20,16 @@ function startUp(geoLat, geoLon){
 }
 
 function main(geoLat, geoLon){
-	console.log('------');
-	console.log('Update');
-
 	var buildings = [];
 
-	$.get('data.php', function(data){
-		// format the data and stick it in an array
-		var data = data.substring(1, data.length-1).split(',');
-		console.log(data);
+	$.getJSON('data.php', function(data){
 
 		var lib = {
 			name: 'library',
-			avail: +data[0],
+			avail: data.Library.status - 1,
 			pcs: {
-				free: +data[1],
-				total: +data[2]
+				free: data.Library.available,
+				total: data.Library.total
 			},
 			coords: {
 				lat: 50.792470,
@@ -45,10 +39,10 @@ function main(geoLat, geoLon){
 
 		var par = {
 			name: 'park',
-			avail: +data[4],
+			avail: data.Park.status - 1,
 			pcs: {
-				free: +data[5],
-				total: +data[6]
+				free: data.Park.available,
+				total: data.Park.total
 			},
 			coords: {
 				lat: 50.797570,
@@ -58,10 +52,10 @@ function main(geoLat, geoLon){
 
 		var por = {
 			name: 'portland',
-			avail: +data[8],
+			avail: data.Portland.status - 1,
 			pcs: {
-				free: data[9],
-				total: data[10]
+				free: data.Portland.available,
+				total: data.Portland.total
 			},
 			coords: {
 				lat: 50.798454,
@@ -71,10 +65,10 @@ function main(geoLat, geoLon){
 
 		var ang = {
 			name: 'anglesea',
-			avail: +data[12],
+			avail: data.Anglesea.status - 1,
 			pcs: {
-				free: +data[13],
-				total: +data[14]
+				free: data.Anglesea.available,
+				total: data.Anglesea.total
 			},
 			coords: {
 				lat: 50.797709,
@@ -87,10 +81,7 @@ function main(geoLat, geoLon){
 		for(var i = 0; i < buildings.length; i++){
 
 			var build = buildings[i];
-			console.log(build);
-
 			var id = build.name.substring(0, 3); // id created from first three chars
-
 			var avail = (build.avail) ? 'open' : 'closed'; // boolean for availability
 
 			$('#'+id).find('h1').html(build.name); // set the heading to the name of the building
@@ -130,8 +121,6 @@ function main(geoLat, geoLon){
 				if(build.avail && build.distance < smallestD.distance){ smallestD = build; }
 			}
 
-			console.log(smallestD);
-
 			$('#'+smallestD.name.substring(0, 3)).find('h1').append('<span>(Closest)</span>');
 			
 		}
@@ -159,9 +148,6 @@ function geoError(err){
 function geo(id, build){
 
 	build.distance = getDistanceFromLatLonInKm(geoLat, geoLon, build.coords.lat, build.coords.lon);
-
-	console.log('Current geo: ', geoLat, geoLon);
-	console.log('Distance: ', build.distance);
 
 	$('#'+id).find('p span').append(' &bull; ' + build.distance.toString().substring(0, 4) + 'km');	
 

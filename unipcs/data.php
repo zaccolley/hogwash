@@ -1,9 +1,13 @@
 <?php
 
 // uni file for their pc availability data
-print file_get_contents('http://openacc-web-01.uni.ds.port.ac.uk/dsign/oaa.php');
+print file_get_contents('http://openacc-web-01.uni.ds.port.ac.uk/OAA/oainfo.php');
 
 /*
+
+	old data:
+	
+	print file_get_contents('http://openacc-web-01.uni.ds.port.ac.uk/dsign/oaa.php');
 
 	example of what the oaa.php file prints out:
 	"[1,251,258,1,1,31,71,1,1,15,45,1,1,1,12,1]"
