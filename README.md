@@ -4,7 +4,9 @@ random bits and bobs
 
 ### [efji](http://www.zaccolley.com/stuff/efji)
 
-i wanted to make an improved version [of a flash game I played](http://www.flashbynight.com/drench/). this was also an experiment with using canvas.
+i wanted to make a version [of a flash game I played](http://www.flashbynight.com/drench/). this was also an experiment with using canvas.
+
+dithering distortion code: https://github.com/mncaudill/3bitdither
 
 ### [greentunic](http://www.zaccolley.com/stuff/foraaron "Birthday present")
 
