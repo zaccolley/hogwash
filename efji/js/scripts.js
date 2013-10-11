@@ -1,9 +1,19 @@
 (function(){ main(); })() // On load
 
+	
 function main(){
-	var itemAmount = 2; // amount of items on grid on one axis
-	var tryCount = 4; // amount of tries you get
+	var itemAmount = 15; // amount of items on grid on one axis
+	var tryCount = 30; // amount of tries you get
+
 	var colourSeed = Math.floor(Math.random()*360); // random colour seed
+
+	var size = itemAmount * Math.floor(($(window).width() / 4) / itemAmount);
+
+	$('canvas').attr('Height', size);
+	$('canvas').attr('Width', size);
+	$('canvas').width(size);
+	$('.controls').width(size);
+
 	game(true, colourSeed, itemAmount, tryCount);
 }
 
@@ -26,16 +36,14 @@ function game(intial, colourSeed, itemAmount, tryCount){
 		var itemSize = canvasSize / itemAmount;
 		
 		// amount of colours to generate from the seed
-		var colourAmount = 4;
-		// more colours at a later point in game
-		if(itemAmount == 6){ colourAmount = 6; }
+		var colourAmount = 6;
 
 		// generate the colours to be used
 		colours = genColours(colourSeed, colourAmount);
 
 		genButtons(colours);
 		// make the buttons all equal width
-		var buttonSize = (100 / colours.length)+'%';
+		var buttonSize = (100 / colours.length * 2)+'%';
 		$('.input-button').css('width', buttonSize);
 		$('.input-button').css('height', $('.input-button').css('width'));
 
@@ -120,8 +128,7 @@ function game(intial, colourSeed, itemAmount, tryCount){
 		// progression or refresh of a game
 		function winLoseHandler(){
 			if($('.win-lose button').hasClass('win-button')){
-				itemAmount += 1;
-				tryCount = Math.ceil(intialTryCount * 1.5);
+				tryCount = intialTryCount++;
 				game(false, colourSeed, itemAmount, tryCount);
 			}else if($('.win-lose button').hasClass('lose-button')){
 				game(false, colourSeed, itemAmount, intialTryCount);
@@ -260,7 +267,7 @@ function genButtons(colours){
 	var startPos = Math.floor((buttonChars.length - colours.length) / 2);
 	var colourCount = 0;
 	for(var i = startPos; i < startPos + colours.length; i++){
-		$('<button class="input-button" style="background-color:'+colours[colourCount]+';" value="'+(i-1)+'">'+buttonChars.charAt(i)+'</button>').appendTo('.buttons');
+		$('<button class="input-button" style="background-color:'+colours[colourCount]+';" value="'+i+'">'+buttonChars.charAt(i)+'</button>').appendTo('.buttons');
 		colourCount++;
 	}
 }

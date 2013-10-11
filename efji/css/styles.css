@@ -16,20 +16,15 @@ button:hover{ cursor: pointer; }
 body{ font-family: 'Comfortaa', sans-serif; background: #F5F5F5; }
 
 main{
+	display: block;
 	overflow: hidden;
 	position: relative;
-	display: block;
-	width: 70%;
-	margin: 20px auto;
-	background: #BBB;
+	margin: 20px 0;
+	width: 100%;
 }
 
-@media all and (max-width: 700px){ main{ width: 80%; } }
-@media all and (max-width: 400px){ main{ width: 100%; } }
-
 h1{
-	background: rgba(0,0,0,0.1);
-	height: 70px;
+	background: rgba(0,0,0,.1);
 	color: rgba(255,255,255,.6);
 	padding: 10px;
 	font-size: 1.5em;
@@ -37,25 +32,27 @@ h1{
 	text-align: center;
 }
 
-.controls{ overflow: hidden; }
+canvas{ display: block; }
 
-canvas, .controls{
-	float: left;
-	width: 50%;
-	background: #DDD;
+.controls{
+	overflow: hidden;
 }
 
-@media all and (max-width: 400px){ canvas, .controls{ float: none; width: 100%; } }
+canvas, .controls{
+	margin: 0 auto;
+	background: #DDD;
+}
 
 .buttons{ overflow: hidden; }
 
 .buttons button{
 	float: left;
 	height: 100px;
-	font-size: 1.5em;
+	font-size: 1em;
 	font-weight: 900;
 	color: rgba(0,0,0,.35);
-	box-shadow: inset 0 0 0 20px rgba(0,0,0,.025);
+	outline: none;
+	box-shadow: inset 0 0 0 .75em rgba(0,0,0,.025);
 }
 
 .win-lose{
@@ -89,7 +86,6 @@ canvas, .controls{
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	height: 170px;
 	padding: 10px 20px;
 	color: rgba(95,95,95,.75);
 	background: rgb(221, 221, 221);
