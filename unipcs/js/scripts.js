@@ -125,7 +125,9 @@ function main(geoLat, geoLon){
 			
 		}
 
-	});
+	}).fail(function() {
+    	$('section').find('p').text('Data missing!');
+  	});
 
 }
 
