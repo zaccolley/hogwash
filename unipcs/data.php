@@ -1,7 +1,7 @@
 <?php
 
 // uni file for their pc availability data
-print file_get_contents('http://openacc-web-01.uni.ds.port.ac.uk/OAA/oainfo.php');
+print file_get_contents('http://openacc-web-01.uni.ds.port.ac.uk/dsign/oainfo.php');
 
 /*
 
