@@ -121,7 +121,7 @@ function main(geoLat, geoLon){
 				if(build.avail && build.distance < smallestD.distance){ smallestD = build; }
 			}
 
-			$('#'+smallestD.name.substring(0, 3)).find('h1').append('<span>(Closest)</span>');
+			$('#'+smallestD.name.substring(0, 3)).find('h1').append('<span>Closest</span>');
 			
 		}
 
@@ -151,8 +151,17 @@ function geo(id, build){
 
 	build.distance = getDistanceFromLatLonInKm(geoLat, geoLon, build.coords.lat, build.coords.lon);
 
-	$('#'+id).find('p span').append(' &bull; ' + build.distance.toString().substring(0, 4) + 'km');	
+	console.log(build.distance);
 
+	var distanceStr = "";
+
+	if(build.distance > 0.01){
+		var distanceStr = build.distance.toString().substring(0, 4) + 'km';
+	}else{
+		var distanceStr = "You're here!";
+	}
+
+	$('#'+id).find('p span').append('&bull; ' + distanceStr);	
 }
 
 // http://stackoverflow.com/questions/27928/how-do-i-calculate-distance-between-two-latitude-longitude-points
