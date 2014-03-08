@@ -23,6 +23,7 @@ function main(geoLat, geoLon){
 	var buildings = [];
 
 	$.getJSON('data.php', function(data){
+		console.log(data);
 
 		var lib = {
 			name: 'library',
