@@ -1,0 +1,385 @@
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/mrl8jkM18OlOQN8JLgasDxM0YzuT7MdOe03otPbuUS0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Alfa Slab One';
+  font-weight: 400;
+  src: local('Alfa Slab One'), local('AlfaSlabOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/alfaslabone/v2/Qx6FPcitRwTC_k88tLPc-fn8qdNnd5eCmWXua5W-n7c.woff) format('woff');
+}
+
+*{  margin:  0;
+	padding: 0;
+	outline: none;
+	border: none;
+	box-sizing: border-box;
+}
+
+h1, h2, h3{ font-weight: normal; }
+
+html{
+	height: 100%;
+}
+
+body{
+	background-color: hsl(230, 10%, 35%);
+	transition: background .75s ease-in;
+}
+
+article{
+	width: 60%;
+	margin: 0 auto;
+}
+
+article .head{
+	margin: 2.5% auto;
+}
+
+article .head #face{
+	display: none;
+	margin: 0 .05em -.1em 0;
+	height: .88em;
+	border-bottom: .1em solid;
+	border-color: hsl(0, 0%, 55%);
+	border-radius: .25em / .3em;	
+	transition: border-color .75s ease-in;
+}
+
+article .head #title{
+	min-width: 200px;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 0 0.1em hsl(0, 0%, 55%);
+	line-height: 1em;
+	letter-spacing: .05em;
+	color: hsl(50, 10%, 95%);
+	font-size: 6.5em;
+	font-family: 'Alfa Slab One', Helvetica, Arial, sans-serif;
+	cursor: default;
+	transition: color .75s ease-in, text-shadow .75s ease-in;
+	user-select: none;
+}
+
+.notepad, header li{
+	padding: 2px;
+	border: 1px solid;
+	border-color: #CfD0C8;
+	border-bottom-color: #404040;
+	border-right-color: #404040;
+	background-color: #CfD0C8;
+	box-shadow: inset 1px 1px 0 #FFF, inset -1px -1px 0 #808080;
+}
+
+.notepad{
+	width: 100%;
+	min-width: 200px;
+	overflow-y: hidden;
+	height: 400px;
+	font-family: 'Source Code Pro', monospace;
+	font-size: .8em;
+}
+
+.notepad-transitions{
+	transition: height 0.5s, width 0.5s;
+}
+
+.notepad-max{
+	width: 120%;
+}
+
+.notepad-min{
+	height: 25px;
+	overflow: hidden;
+}
+ 
+header{	
+	cursor: default;
+	overflow: auto;
+	padding: 1px;
+
+	background: #122A70;
+	background: linear-gradient(to right, #122A70, #9fC6ED);
+
+	user-select: none;
+}
+
+header h1{
+	float: left;
+	color: #FFF;
+	font-size: 1em;
+	padding-left: 20px;
+	background: url('../img/notepad.png') no-repeat 1px center;
+}
+
+header ul{
+	margin-right: 1px;
+	float:right;
+}
+
+header li{
+	float:left;
+	margin-left: 2px;
+	width: 16px;
+	height: 16px;
+	color: #000;
+	list-style-type: none;
+}
+
+#min{
+	box-shadow: inset 1px 1px 0 #FFF, inset -1px -1px 0 #808080,
+				inset 0 0 0 2px #CFD0C8,inset 2px 0 0 2px #CFD0C8,
+				inset -3px 0 0 2px #CFD0C8, inset 0 -2px 0 2px #000;
+}
+
+#min:active{
+	border-color: #404040;
+	border-bottom-color: #CFD0C8;
+	border-right-color: #CFD0C8;
+
+	box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #FFF,
+				inset 0 0 0 2px #CFD0C8, inset 2px 0 0 2px #cfd0c8,
+				inset -3px 0 0 2px #CFD0C8, inset 0 -2px 0 2px #000;	
+}
+
+#max{
+	box-shadow: inset 1px 1px 0 #FFF, inset -1px -1px 0 #808080,
+				inset 0 0 0 2px #CFD0C8, inset 1px 0 0 2px #CFD0C8,
+				inset -1px 0 0 2px #CFD0C8, inset 0px 1px 0 2px #CFD0C8, inset 0 1px 0 4px #000;
+}
+
+#max:active{
+	border-color: #404040;
+	border-bottom-color: #CFD0C8;
+	border-right-color: #CFD0C8;
+
+	box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #FFF,
+				inset 0 0 0 2px #CFD0C8, inset 1px 0 0 2px #CFD0C8,
+				inset -1px 0 0 2px #CFD0C8, inset 0px 1px 0 2px #CFD0C8, inset 0 1px 0 4px #000;
+}
+
+#close{
+	line-height: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-family: Verdana, sans-serif;
+}
+
+#close:active{
+	border-color: #404040;
+	border-bottom-color: #cfd0c8;
+	border-right-color: #cfd0c8;
+
+	box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #FFF;
+}
+
+#close a{
+	display: block;
+	cursor: default;
+	color: #000;
+	text-decoration: none;
+}
+
+.notepad nav ul{
+	padding: 3px 0;
+	overflow: auto;
+}
+
+.notepad nav ul li{
+	cursor: default;
+	border: 1px solid;	
+	border-color: transparent;
+	float: left;
+	list-style: none;
+	user-select: none;
+}
+
+.notepad nav ul li:hover{
+	border-color: #FFF;
+	border-bottom-color: #808080;
+	border-right-color: #808080;
+}
+
+.notepad nav ul li:active{
+	border-color: #808080;
+	border-bottom-color: #FFF;
+	border-right-color: #FFF;
+}
+
+.notepad nav ul li a{
+	padding: 3px;
+	cursor: default;
+	display: block;
+	color: #000;
+	text-decoration: none;
+}
+
+.notepad nav ul li a:active{
+	padding: 5px 1px 1px 5px;
+}
+
+.textarea{
+	height: 345px;
+	overflow-y: scroll;
+	padding: 0.5em;
+	border: 1px solid;
+	border-color: #808080;
+	border-bottom-color: #FFF;
+	border-right-color: #FFF;
+	background-color: #FFF;
+	line-height: 1.5em;
+	box-shadow: inset -1px -1px 0 #CFD0C8, inset 1px 1px 0 #404040;
+}
+
+.textarea h1, .textarea h2{
+	font-size: 1em;
+}
+
+.textarea h2{
+	font-size: 1em;
+}
+
+.textarea p{
+	color: rgba(0,0,0,0.85);
+}
+
+/* markdown-esque styling */
+.textarea p, h2, .textarea section ul{ margin-bottom: 1em; }
+.textarea h2::before{ content: '## '; }
+.textarea em::before, .textarea em::after{ content: '_'; }
+.textarea li::before{ content: '+ '; }
+
+.textarea span.inactive{ /* inactive links */
+	color: gray;
+	cursor: help;
+	text-decoration: underline;
+}
+
+.textarea time{
+	color: #444;
+	font-size: .85em;
+}
+
+
+.textarea::-webkit-scrollbar{
+    width: 16px;
+}
+ 
+.textarea::-webkit-scrollbar-track{
+	background: #CFD0C8;
+}
+ 
+.textarea::-webkit-scrollbar-thumb, .textarea::-webkit-scrollbar-button{
+    border: 1px solid;
+	border-color: #CFD0C8;
+	border-bottom-color: #404040;
+	border-right-color: #404040;
+	background-color: #CFD0C8;
+	box-shadow: inset 1px 1px 0 #FFF, inset -1px -1px 0 #808080;
+}
+
+.textarea::-webkit-scrollbar-button:active{
+	border: 1px solid;
+	border-color: #404040;
+	border-bottom-color: #CFD0C8;
+	border-right-color: #CFD0C8;
+	background-color: #CFD0C8;
+	box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #FFF;
+}
+
+.textarea::-webkit-scrollbar-button:start{
+	background: url('../img/startbuttonscroll.png') center no-repeat #cfd0c8;
+}
+
+.textarea::-webkit-scrollbar-button:end{
+	background: url('../img/endbuttonscroll.png') center no-repeat #cfd0c8;
+}
+
+/* title gets smaller when you resize the window */
+
+@media (max-width: 1300px){ article .head #title{ font-size: 5em; } }
+@media (max-width: 1000px){ article .head #title{ font-size: 4em; } }
+@media (max-width: 800px){ article .head #title{ font-size: 3em; } }
+
+/* title changes but also some other adjustments to the notepad */
+ 
+@media (max-width: 600px){
+	article{ width: 70%; }
+	article .head #title{ font-size: 2.5em; }
+	header h1{ font-size: 0.85em; }
+}
+
+@media (max-width: 450px){ article .head #title{ font-size: 2em; } article{ width: 80%; } }
+@media (max-width: 350px){ article .head #title{ font-size: 1.5em; } article{ width: 90%; } }
+
+/* blog */
+/* ---- */
+
+.post .audioimg{ width: 30%; }
+.post em{ background-color: rgba(45, 120, 160, .2); }
+.post code{
+	font-size: 1rem;
+	background-color: rgba(95, 120, 160, .2);
+}
+
+/* css triangles post */
+
+.csstriangle .box{
+	margin: 1em 0;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	border-style: solid;
+	border-color: #505050 #FFA300 #8BFF8B #418AE6;
+}
+
+.csstriangle .box:nth-child(1){ width: 100px; height: 100px; border-width: 1px; }
+.csstriangle .box:nth-child(2), .csstriangle .box:nth-child(3){ width: 0px; height: 0px; border-width: 50px; }
+.csstriangle .box:nth-child(3){ border-color: transparent transparent #505050 transparent; }
+
+.csstriangle .singlebox{
+	width: 0px;
+	border: 50px solid transparent;
+	border-bottom: 50px solid #000;
+}
+
+/* css recreated ui post*/
+
+.esch{
+	cursor: default;
+	margin: 0 .5em .5em;
+	width: 20px;
+	height: 20px;
+	font-size: 30px;
+	text-align: center;
+	background: rgb(33, 51, 60);
+	border-radius: 2px;
+}
+
+.esch::after{
+	color: #fff;
+	display: block;
+	content: '+';
+}
+
+.esch:hover::after{
+	-webkit-transition: all 1s;
+	   -moz-transition: all 1s;
+		-ms-transition: all 1s;
+		 -o-transition: all 1s;
+			transition: all 1s;
+	
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		 -o-transform: rotate(45deg);
+			transform: rotate(45deg);
+
+	-webkit-transform-origin: 50%;
+	   -moz-transform-origin: 50%;
+		-ms-transform-origin: 50%;
+		 -o-transform-origin: 50%;
+			transform-origin: 50%;
+}

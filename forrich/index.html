@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Happy Birthday Rich!</title>
+	<style type="text/css">
+
+	*{
+		padding:0;
+		margin:0;
+	}
+
+	body{	
+		cursor:default;
+		background: #e8e8ff; 
+		background: -moz-radial-gradient(center, ellipse cover, #e8e8ff 0%, #b7b7ff 99%); 
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #e8e8ff), color-stop(99%, #b7b7ff));
+		background: -webkit-radial-gradient(center, ellipse cover, #e8e8ff 0%, #b7b7ff 99%);
+		background: -o-radial-gradient(center, ellipse cover, #e8e8ff 0%, #b7b7ff 99%); 
+		}
+
+	#wrapper{
+		width: 500px;
+		margin: 0 auto;
+		margin-top:300px;
+	}
+
+	#cake{
+		position: relative;
+		top: -165px;
+		width: 200px;
+		height:150px;
+		margin: 0 auto;
+
+		background: rgb(242,155,197);	
+		border-radius: 50% / 15%;
+	}
+
+	#cake:before{
+		content: '';
+		display:block;	
+		height:40px;
+		width:200px;	
+
+		border-bottom:2px dashed rgb(255,196,225);
+		border-radius: 50%;
+
+		-webkit-box-shadow:inset 0 -10px 5px rgba(0,0,0,0.05);
+		   -moz-box-shadow:inset 0 -10px 5px rgba(0,0,0,0.05);
+				box-shadow:inset 0 -10px 5px rgba(0,0,0,0.05);	
+
+		-webkit-animation: shine 1s ease 0s infinite alternate;
+		   -moz-animation: shine 1s ease 0s infinite alternate;
+				animation: shine 1s ease 0s infinite alternate;
+		
+	}
+
+	#plate{	
+		display:block;
+		width:280px;	
+		height:65px;
+		margin:0 auto;
+
+		background-color:#EBEBEB;
+		border-bottom:1px solid rgba(255,255,255,0.8);
+
+		-webkit-border-radius: 50% 50% 50% 50%;
+		   -moz-border-radius: 50% 50% 50% 50%;
+				border-radius: 50% 50% 50% 50%;
+
+		-webkit-box-shadow:inset 0 0 0 10px #f5f5f5, inset 0 2px 0 15px rgba(100,100,140, 0.6), 0 8px 5px rgba(0,0,0,0.1);
+		   -moz-box-shadow:inset 0 0 0 10px #f5f5f5, inset 0 2px 0 15px rgba(100,100,140, 0.6), 0 8px 5px rgba(0,0,0,0.1);
+				box-shadow:inset 0 0 0 10px #f5f5f5, inset 0 2px 0 15px rgba(100,100,140, 0.6), 0 8px 5px rgba(0,0,0,0.1);
+	}
+
+	ul#candles{	
+		position:relative;
+		top:-340px;
+		width:170px;
+		margin:0 auto;
+	}
+
+	ul#candles li{	
+		display: inline-block;
+		height: 40px;
+		width: 19px;
+		margin: 0 10px;		
+		
+		background-color: rgb(100,141,200);
+
+		-webkit-border-radius: 50% / 5%;
+		   -moz-border-radius: 50% / 5%;
+				border-radius: 50% / 5%;
+
+		-webkit-box-shadow: 0 5px 5px -5px rgba(255,255,255,0.85);
+		   -moz-box-shadow: 0 5px 5px -5px rgba(255,255,255,0.85);
+				box-shadow: 0 5px 5px -5px rgba(255,255,255,0.85);
+		}
+
+	ul#candles li:before{	
+		content: '';
+		display:block;
+		height:5px;
+		width:19px;
+
+		border-bottom:1px solid rgba(0,0,0,0.02);	
+		background:rgba(0,0,0,0.1);
+
+		-webkit-border-radius: 50%;
+		   -moz-border-radius: 50%;
+		   		border-radius: 50%;
+	}
+
+	ul#candles li p{
+		padding-top:4px;
+		font-size:15px;
+		font-family:"Helvetica",sans-serif;
+		color: rgb(100,141,200);
+		text-shadow: 0 1px 0 rgba(0,0,0,0.08), 
+					 0 -1px 0 rgba(255,255,255,0.25);
+
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	.flames{		
+		content: '';	
+		display: block;
+		position: relative;	
+		top: -42px;
+		width: 14px;
+		height: 19px;
+		margin: 0 auto;
+
+		background: #F38711;
+
+		-webkit-border-radius: 50%;
+		   -moz-border-radius: 50%;
+		   		border-radius: 50%;
+
+		-webkit-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B;
+		   -moz-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B;
+				box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B;
+
+		-webkit-animation: flicker 1s ease 0s infinite alternate;
+		   -moz-animation: flicker 1s ease 0s infinite alternate;
+				animation: flicker 1s ease 0s infinite alternate;
+		
+	}
+
+	/* Flickering candle animation */
+
+	@keyframes flicker{
+		0%   { box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B; width:14px; height:19px; top:-43px; }
+		50%  { box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 20px #F5BF5B; width:15px; height:18px; top:-42px; }
+		100% { box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B; width:14px; height:19px; top:-43px; }
+	}
+
+	@-moz-keyframes flicker{
+		0%   { -moz-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B; width:14px; height:19px; top:-43px; }
+		50%  { -moz-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 20px #F5BF5B; width:15px; height:18px; top:-42px; }
+		100% { -moz-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B; width:14px; height:19px; top:-43px; }
+	}
+
+	@-webkit-keyframes flicker{
+		0%   { -webkit-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B; width:14px; height:19px; top:-43px; }
+		50%  { -webkit-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 20px #F5BF5B; width:15px; height:18px; top:-42px; }
+		100% { -webkit-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B; width:14px; height:19px; top:-43px; }
+	}
+
+	@-o-keyframes flicker{
+		0%   { -o-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B; width:14px; height:19px; top:-43px; }
+		50%  { -o-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 20px #F5BF5B; width:15px; height:18px; top:-42px; }
+		100% { -o-box-shadow: inset 0 3px 2px 2px #FDEDCF, inset 0 8px 2px 5px #FAB933, 0 0 10px #F5BF5B; width:14px; height:19px; top:-43px; }
+	}
+
+	/* Light shine on cake animation */
+
+	@keyframes shine{
+		0%   { box-shadow:inset 0 -10px 10px rgba(0,0,0,0.05); }
+		50%  { box-shadow:inset 0 -10px 5px rgba(0,0,0,0.05); }
+		100% { box-shadow:inset 0 -10px 10px rgba(0,0,0,0.05); }
+	}
+
+	@-moz-keyframes shine{
+		0%   { -moz-box-shadow:inset 0 -10px 10px rgba(0,0,0,0.05); }
+		50%  { -moz-box-shadow:inset 0 -10px 5px rgba(0,0,0,0.05); }
+		100% { -moz-box-shadow:inset 0 -10px 10px rgba(0,0,0,0.05); }
+	}	
+
+	@-webkit-keyframes shine{
+		0%   { -webkit-box-shadow:inset 0 -10px 10px rgba(0,0,0,0.05); }
+		50%  { -webkit-box-shadow:inset 0 -10px 5px rgba(0,0,0,0.05); }
+		100% { -webkit-box-shadow:inset 0 -10px 10px rgba(0,0,0,0.05); }
+	}
+
+	@-o-keyframes shine{
+		0%   { -0-box-shadow:inset 0 -10px 10px rgba(0,0,0,0.05); }
+		50%  { -0-box-shadow:inset 0 -10px 5px rgba(0,0,0,0.05); }
+		100% { -0-box-shadow:inset 0 -10px 10px rgba(0,0,0,0.05); }
+	}
+
+	#text{
+		position: relative;
+		top: -150px;
+	}
+
+	#text h1, #text p{	
+		font-family: "Georgia", serif;
+		text-align: center;
+		font-style: italic;
+	}
+
+	#text h1{	
+		font-size: 60px;	
+		line-height: 0.8;
+		text-transform: uppercase;
+		color: rgb(100,141,200);
+		text-shadow: 0 1px 0 rgba(0,0,0,0.1),
+					 0 0 10px #ffffff;
+		
+	}
+
+	#text p{
+		margin-top: 10px;	
+		font-size: 25px;
+		font-weight: lighter;
+		color: rgba(100,100,140, 0.6);
+		text-shadow:0 1px 0 rgba(0,0,0,0.1);	
+	}
+
+	</style>
+</head>
+<body>
+	<article id="wrapper">	
+
+		<section id="plate"></section>	
+		<section id="cake"></section>
+		<ul id="candles">
+			<li><p>R</p><section class="flames"></section></li>
+			<li><p>i</p><section class="flames"></section></li>
+			<li><p>c</p><section class="flames"></section></li>
+			<li><p>h</p><section class="flames"></section></li>
+		</ul>
+		<section id="text">
+			<h1>Happy Birthday Rich!</h1>
+			<p>from the Web Technologies 1st Years</p>
+		</section>
+		
+	</article>
+</body>
+</html>
